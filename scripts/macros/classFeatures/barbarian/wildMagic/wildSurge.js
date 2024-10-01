@@ -48,11 +48,20 @@ async function use({workflow}) {
             seconds: rageEffect.duration.remaining
         }
     };
+    if(actor.getFlag("chris-premades", "keyLevel") >= 2){
+        level2(workflow, token, actor);
+    }
     let featureData;
     let feature;
     let saveDC = 8 + workflow.actor.system.attributes.prof + workflow.actor.system.abilities.con.mod;
+    let results_html;
     switch (selection) {
         case 'shadowyTendrils': {
+            results_html = `<h3>Shadowy Tendrils!</h3>
+            <p>Each creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d12 necrotic damage. You also gain 1d12 temporary hit points.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wild Surge: Shadowy Tendrils', {object: true, getDescription: true, translate: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.ShadowyTendrils'), flatDC: saveDC, identifier: 'wildSurgeShadowyTendrils'});
             if (!featureData) {
                 errors.missingPackItem();
@@ -69,6 +78,11 @@ async function use({workflow}) {
             break;
         }
         case 'teleport':
+            results_html = `<h3>Teleport!</h3>
+            <p>You teleport up to 30 feet to an unoccupied space you can see. Until your rage ends, you can use this effect again on each of your turns as a bonus action.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wild Surge: Teleport', {object: true, getDescription: true, translate: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.Teleport'), identifier: 'wildSurgeTeleport'});
             if (!featureData) {
                 errors.missingPackItem();
@@ -79,6 +93,11 @@ async function use({workflow}) {
             await workflowUtils.completeItemUse(feature);
             break;
         case 'intangibleSpirit':
+            results_html = `<h3>Intangible Spirit!</h3>
+            <p>An intangible spirit, which looks like a flumph or a pixie (your choice), appears within 5 feet of one creature of your choice that you can see within 30 feet of you. At the end of the current turn, the spirit explodes, and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 1d6 force damage. Until your rage ends, you can use this effect again, summoning another spirit, on each of your turns as a bonus action.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wild Surge: Intangible Spirit', {object: true, getDescription: true, translate: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.IntangibleSpirit'), identifier: 'wildSurgeIntangibleSpirit'});
             if (!featureData) {
                 errors.missingPackItem();
@@ -89,6 +108,11 @@ async function use({workflow}) {
             await workflowUtils.completeItemUse(feature);
             break;
         case 'magicInfusion': {
+            results_html = `<h3>Magic Infusion!</h3>
+            <p>Magic infuses one weapon of your choice that you are holding. Until your rage ends, the weapon's damage type changes to force, and it gains the light and thrown properties, with a normal range of 20 feet and a long range of 60 feet. If the weapon leaves your hand, the weapon reappears in your hand at the end of the current turn.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
             if (!weapons.length) return;
             let weapon;
@@ -158,6 +182,11 @@ async function use({workflow}) {
             break;
         }
         case 'retribution':
+            results_html = `<h3>Retribution!</h3>
+            <p>Whenever a creature hits you with an attack roll before your rage ends, that creature takes 1d6 force damage, as magic lashes out in retribution.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wild Surge: Retribution', {object: true, getDescription: true, translate: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.Retribution'), identifier: 'wildSurgeRetribution'});
             if (!featureData) {
                 errors.missingPackItem();
@@ -167,11 +196,21 @@ async function use({workflow}) {
             await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.Rage')});
             break;
         case 'protectiveLights':
+            results_html = `<h3>Protective Lights!</h3>
+            <p>Until your rage ends, you are surrounded by multicolored, protective lights; you gain a +1 bonus to AC, and while within 10 feet of you, your allies gain the same bonus.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             effectData.name = genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: effectData.name});
             effectUtils.addMacro(effectData, 'aura', ['wildSurgeProtectiveLights']);
             await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
             break;
         case 'flowersAndVines': {
+            results_html = `<h3>Flowers and Vines!</h3>
+            <p>Flowers and vines temporarily grow around you; until your rage ends, the ground within 15 feet of you is difficult terrain for your enemies.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             let templateData = {
                 t: 'circle',
                 x: workflow.token.center.x,
@@ -189,6 +228,11 @@ async function use({workflow}) {
             break;
         }
         case 'boltOfLight': {
+            results_html = `<h3>Bolt of Light!</h3>
+            <p>A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
             featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Wild Surge: Bolt of Light', {object: true, getDescription: true, translate: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.WildSurge.BoltOfLight'), identifier: 'wildSurgeBoltOfLight'});
             if (!featureData) {
                 errors.missingPackItem();
@@ -298,6 +342,205 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
         effectOptions: {identifier}
     };
 }
+async function level2(workflow, token, actor){
+    //check all of nyxs equiped to make sure its only the axe.
+    let items = actor.items.filter(i => i.type==='weapon' && i.system.equipped);
+    let shields = actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
+    if(shields.length){
+        return;
+    }
+    if(items.length == 1){
+        console.log("Only 1 item equiped");
+        let rollFormula = '1d3';
+        let roll = await new Roll(rollFormula).roll({'async': true});
+        roll.toMessage({
+            rollMode: 'roll',
+            speaker: {'alias': name},
+            flavor: workflow.item.name
+        });
+        console.log("Roll total" + roll.total);
+        console.log(roll.total);
+        let results_html;
+        let effectData;
+        let effect;
+        //Change to probably be +2 str, dex, or con. Save bless for an upgrade letter down the line and lean into the randomness maybe.
+        switch(roll.total) {
+            case 1:
+                // +2 Con
+                results_html = `<h3>Feral Constitution!</h3>
+                <p>The metal of your axe flows into you reinforcing your skin. You gain +2 Con Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Feral Constitution',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.con.value',
+                            'mode': 2,
+                            'value': '2',
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                effect = chris.findEffect(token.actor, effectData.name);
+                if (effect?.origin === effectData.origin) return;
+                if (effect) await chris.removeEffect(effect);
+                await chris.createEffect(token.actor, effectData);
+                //Should heal after giving con = to level
+                let level = actor.system.details.level;
+                await actor.update({"system.attributes.hp.value" : actor.system.attributes.hp.value + level})
+                break;
+            case 2:
+                // +2 Dex
+                results_html = `<h3>Untamed Reflexes!</h3>
+                <p>Your body sears in pain as your brain begins to accelerate. You gain +2 Dex Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Untamed Reflexes',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.dex.value',
+                            'mode': 2,
+                            'value': '2',
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                effect = chris.findEffect(token.actor, effectData.name);
+                if (effect?.origin === effectData.origin) return;
+                if (effect) await chris.removeEffect(effect);
+                await chris.createEffect(token.actor, effectData);
+                break;
+            case 3:
+                //+2 Str
+                results_html = `<h3>Feral Strength!</h3>
+                <p>You feel the power of all those you have slain flow into you. You gain +2 Str Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Feral Strength',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.str.value',
+                            'mode': 2,
+                            'value': '2',
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                effect = chris.findEffect(token.actor, effectData.name);
+                if (effect?.origin === effectData.origin) return;
+                if (effect) await chris.removeEffect(effect);
+                await chris.createEffect(token.actor, effectData);
+                break;
+            case 500:
+                //Wild Bless
+                results_html = `<h3>Wild Bless!</h3>
+                <p>Your axe surges with power blessing you with increased strength.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                let blessBonus = '1d4'
+                effectData = {
+                    'name': 'Wild Bless',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.bonuses.abilities.save',
+                            'mode': 2,
+                            'value': blessBonus,
+                            'priority': 20
+                        },
+                        {
+                            'key': 'system.bonuses.mwak.attack',
+                            'mode': 2,
+                            'value': blessBonus,
+                            'priority': 20
+                        },
+                        {
+                            'key': 'system.bonuses.msak.attack',
+                            'mode': 2,
+                            'value': blessBonus,
+                            'priority': 20
+                        },
+                        {
+                            'key': 'system.bonuses.rsak.attack',
+                            'mode': 2,
+                            'value': blessBonus,
+                            'priority': 20
+                        },
+                        {
+                            'key': 'system.bonuses.rwak.attack',
+                            'mode': 2,
+                            'value': blessBonus,
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                effect = chris.findEffect(token.actor, effectData.name);
+                if (effect?.origin === effectData.origin) return;
+                if (effect) await chris.removeEffect(effect);
+                await chris.createEffect(token.actor, effectData);
+                break;
+        }
+
+    }
+}
 export let wildSurge = {
     name: 'Wild Surge',
     version: '0.12.20',
@@ -405,3 +648,16 @@ export let wildSurgeProtectiveLights = {
         }
     ]
 };
+// export let level2 = {
+//     name: 'Bolstering Magic ',
+//     version: wildSurge.version,
+//     midi: {
+//         item: [
+//             {
+//                 pass: 'rollFinished',
+//                 macro: use,
+//                 priority: 50
+//             }
+//         ]
+//     }
+// };
