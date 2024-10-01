@@ -140,6 +140,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'value': '1',
                 'mode': 0,
                 'priority': 20
+            },
+            {
+                'key': 'system.attributes.ac.bonus',
+                'value': '1',
+                'mode': '2',
+                'priority': 20
             }
         ],
         'origin': workflow.item.uuid,
@@ -156,6 +162,47 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
+    //level 2 artifact
+    if(actor.getFlag("chris-premades", "keyLevel") >= 2){
+        /*effectData.changes.push(
+            {
+                'key': 'system.traits.dr.value',
+                'value': "slashing",
+                'mode': 2,
+                'priority': 20
+            }
+        );
+        effectData.changes.push(
+            {
+                'key': 'system.traits.dr.value',
+                'value': "bludgeoning",
+                'mode': 2,
+                'priority': 20
+            }
+        );
+        effectData.changes.push(
+            {
+                'key': 'system.traits.dr.value',
+                'value': "piercing",
+                'mode': 2,
+                'priority': 20
+            }
+        );*/
+
+        let damage_type = await chris.dialog('Damage type:',[['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
+            ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder']]);
+        console.log(damage_type);
+        if(damage_type){
+            effectData.changes.push(
+                {
+                    'key': 'system.traits.dr.value',
+                    'value': damage_type,
+                    'mode': 2,
+                    'priority': 20
+                }
+            );
+        }
+    }
     if (druidLevels === 20) delete effectData.changes;
     let invalidTypes = [
         'weapon',

@@ -4,3 +4,8 @@ packs/
 dist/
 module.json
 node_modules/
+package.json
+package-lock.json
+module-template.json
+module-dev.json
+.DS_Store

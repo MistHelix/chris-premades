@@ -1,6 +1,6 @@
 {
-  "id": "chris-premades",
-  "title": "Chris's Premades",
+  "id": "chris-premades-test",
+  "title": "Chris's Premades-test",
   "description": "Chris's premade items for high-automation midi-qol games.",
   "version": "#{VERSION}#",
   "library": "false",

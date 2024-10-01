@@ -112,6 +112,7 @@ import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {disintegrate} from './macros/spells/disintegrate.js';
 import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
+import { dramirSmite } from './macros/classFeatures/customFeatures/dramirSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
 import {draconicSpirit} from './macros/monsterFeatures/draconicSpirit/draconicSpirit.js';
 import {draconicStrike} from './macros/classFeatures/monk/wayOfTheAscendantDragon/draconicStrike.js';
@@ -715,6 +716,7 @@ export let macros = {
     'disintegrate': disintegrate,
     'divineFury': divineFury,
     'divineSmite': divineSmite,
+    'dramirSmite': dramirSmite,
     'divineStrike': divineStrike,
     'draconicStrike': draconicStrike,
     'dragonVessel': dragonVessel,
