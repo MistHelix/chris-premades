@@ -48,8 +48,8 @@ async function use({workflow}) {
             seconds: rageEffect.duration.remaining
         }
     };
-    if(actor.getFlag("chris-premades", "keyLevel") >= 2){
-        level2(workflow, token, actor);
+    if(workflow.actor.getFlag("chris-premades", "keyLevel") >= 2){
+        level2(workflow, workflow.token, workflow.actor, rageEffect);
     }
     let featureData;
     let feature;
@@ -342,7 +342,7 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
         effectOptions: {identifier}
     };
 }
-async function level2(workflow, token, actor){
+async function level2(workflow, token, actor, rageEffect){
     //check all of nyxs equiped to make sure its only the axe.
     let items = actor.items.filter(i => i.type==='weapon' && i.system.equipped);
     let shields = actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
@@ -350,7 +350,6 @@ async function level2(workflow, token, actor){
         return;
     }
     if(items.length == 1){
-        console.log("Only 1 item equiped");
         let rollFormula = '1d3';
         let roll = await new Roll(rollFormula).roll({'async': true});
         roll.toMessage({
@@ -358,8 +357,6 @@ async function level2(workflow, token, actor){
             speaker: {'alias': name},
             flavor: workflow.item.name
         });
-        console.log("Roll total" + roll.total);
-        console.log(roll.total);
         let results_html;
         let effectData;
         let effect;
@@ -396,10 +393,6 @@ async function level2(workflow, token, actor){
                         }
                     }
                 };
-                effect = chris.findEffect(token.actor, effectData.name);
-                if (effect?.origin === effectData.origin) return;
-                if (effect) await chris.removeEffect(effect);
-                await chris.createEffect(token.actor, effectData);
                 //Should heal after giving con = to level
                 let level = actor.system.details.level;
                 await actor.update({"system.attributes.hp.value" : actor.system.attributes.hp.value + level})
@@ -435,10 +428,6 @@ async function level2(workflow, token, actor){
                         }
                     }
                 };
-                effect = chris.findEffect(token.actor, effectData.name);
-                if (effect?.origin === effectData.origin) return;
-                if (effect) await chris.removeEffect(effect);
-                await chris.createEffect(token.actor, effectData);
                 break;
             case 3:
                 //+2 Str
@@ -471,10 +460,102 @@ async function level2(workflow, token, actor){
                         }
                     }
                 };
-                effect = chris.findEffect(token.actor, effectData.name);
-                if (effect?.origin === effectData.origin) return;
-                if (effect) await chris.removeEffect(effect);
-                await chris.createEffect(token.actor, effectData);
+                break;
+                case 4:
+                    //+2 Int
+                    results_html = `<h3>Strong Headed!</h3>
+                    <p>You feel the shards of metal from your enemies weapons reinforce your brain. You gain +2 Int Score.</p>`;
+                    ChatMessage.create({
+                        content: results_html
+                    });
+                    effectData = {
+                        'name': 'Strong Headed',
+                        'icon': workflow.item.img,
+                        'origin': workflow.item.uuid,
+                        'duration': {
+                            'seconds': 60
+                        },
+                        'changes': [
+                            {
+                                'key': 'system.abilities.int.value',
+                                'mode': 2,
+                                'value': '2',
+                                'priority': 20
+                            }
+                        ],
+                        'flags': {
+                            'chris-premades': {
+                                'aura': false,
+                                'effect': {
+                                    'noAnimation': true
+                                }
+                            }
+                        }
+                    };
+                    break;
+                case 5:
+                    //+2 Wis
+                    results_html = `<h3>Herd Instincts!</h3>
+                    <p>You feel the power of your animal companions guide you. You gain +2 Wis Score.</p>`;
+                    ChatMessage.create({
+                        content: results_html
+                    });
+                    effectData = {
+                        'name': 'Herd Instincts',
+                        'icon': workflow.item.img,
+                        'origin': workflow.item.uuid,
+                        'duration': {
+                            'seconds': 60
+                        },
+                        'changes': [
+                            {
+                                'key': 'system.abilities.wis.value',
+                                'mode': 2,
+                                'value': '2',
+                                'priority': 20
+                            }
+                        ],
+                        'flags': {
+                            'chris-premades': {
+                                'aura': false,
+                                'effect': {
+                                    'noAnimation': true
+                                }
+                            }
+                        }
+                    };
+                    break;
+            case 6:
+                //+2 Cha
+                results_html = `<h3>Infernal Beauty!</h3>
+                <p>You feel the fire within you burn with courage. You gain +2 Cha Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Infernal Beauty',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.cha.value',
+                            'mode': 2,
+                            'value': '2',
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
                 break;
             case 500:
                 //Wild Bless
@@ -532,13 +613,9 @@ async function level2(workflow, token, actor){
                         }
                     }
                 };
-                effect = chris.findEffect(token.actor, effectData.name);
-                if (effect?.origin === effectData.origin) return;
-                if (effect) await chris.removeEffect(effect);
-                await chris.createEffect(token.actor, effectData);
                 break;
         }
-
+        effectUtils.createEffect(workflow.actor, effectData);
     }
 }
 export let wildSurge = {

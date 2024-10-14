@@ -228,6 +228,7 @@ export {emboldeningBond, emboldeningBondEmboldened} from './macros/classFeatures
 export {empoweredEvocation} from './macros/classFeatures/wizard/schoolOfEvocation/empoweredEvocation.js';
 export {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
 export {evasion} from './macros/classFeatures/multiple/evasion.js';
+export {eventHorizon, eventHorizonTemplate} from './macros/classFeatures/wizard/graviturgyMagic/eventHorizon.js';
 export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansiveBond.js';
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
 export {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
@@ -249,6 +250,7 @@ export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/gi
 export {giantsMight} from './macros/classFeatures/fighter/runeKnight/giantsMight.js';
 export {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 export {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+export {gravityWell} from './macros/classFeatures/wizard/graviturgyMagic/gravityWell.js'
 export {greatStature} from './macros/classFeatures/fighter/runeKnight/greatStature.js';
 export {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 export {guardianArmor, guardianArmorThunderGauntlets, guardianArmorDefensiveField} from './macros/classFeatures/artificer/armorer/guardianArmor.js';
@@ -355,6 +357,7 @@ export {unleashIncarnation} from './macros/classFeatures/fighter/echoKnight/unle
 export {unstableBacklash} from './macros/classFeatures/barbarian/wildMagic/unstableBacklash.js';
 export {viciousIntent} from './macros/classFeatures/fighter/gunslinger/viciousIntent.js';
 export {vigilantBlessing} from './macros/classFeatures/cleric/twilightDomain/vigilantBlessing.js';
+export {violentAttraction} from './macros/classFeatures/wizard/graviturgyMagic/violentAttraction.js'; 
 export {wildSurge, wildSurgeIntangibleSpirit, wildSurgeProtectiveLights, wildSurgeRetribution, wildSurgeTeleport} from './macros/classFeatures/barbarian/wildMagic/wildSurge.js';
 export {wildShape, wildShapeActive} from './macros/classFeatures/druid/wildShape.js';
 export {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';

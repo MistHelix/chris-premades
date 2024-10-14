@@ -129,9 +129,9 @@ async function use({workflow}) {
             }
         );
     }
-    if(actor.getFlag("chris-premades", "keyLevel") >= 2){
-
-        let damage_type = await chris.dialog('Damage type:',[['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
+    if(workflow.actor.getFlag("chris-premades", "keyLevel") >= 2){
+        console.log("Level 2");
+        let damage_type = await dialogUtils.buttonDialog('Pulorus Cohortis Level 2','Damage type:',[['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
             ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder']]);
         console.log(damage_type);
         if(damage_type){
