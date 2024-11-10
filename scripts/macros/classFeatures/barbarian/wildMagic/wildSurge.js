@@ -350,7 +350,7 @@ async function level2(workflow, token, actor, rageEffect){
         return;
     }
     if(items.length == 1){
-        let rollFormula = '1d3';
+        let rollFormula = '1d6';
         let roll = await new Roll(rollFormula).roll({'async': true});
         roll.toMessage({
             rollMode: 'roll',
