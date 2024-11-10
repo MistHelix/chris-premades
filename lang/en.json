@@ -112,6 +112,9 @@
                 "Water": "Water"
             },
             "ApplyFilter": "Apply Filter:",
+            "AttackBonus": "Attack Bonus:",
+            "Character": "Character",
+            "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
@@ -144,22 +147,33 @@
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
+            "CreatureTypes": "Creature Types:",
+            "CriticalOnly": "Critical Only:",
+            "DC": "DC:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DisplayFormulaRoll": "Display Formula Roll:",
+            "Distance": "Distance:",
             "Expire": "Expiration:",
             "Formula": "Formula:",
+            "HideToken": "Hide Token:",
+            "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "MaxLevel": "Max Level:",
+            "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
             "SaveDC": "Save DC:",
+            "Scale": "Scale:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
-            "SpecificAnimation": "{option} Animation:"
+            "SpecificAnimation": "{option} Animation:",
+            "UseFormula": "Use Formula:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -169,6 +183,7 @@
             "Unknown": "Unknown Cover"
         },
         "CustomMacros": {
+            "NoIdentifier": "A registered macro was missing an identifier and was skipped!",
             "NoReturn": "The macro \"{name}\" is not returning valid data and has been skipped!"
         },
         "CustomTypes": {
@@ -195,21 +210,27 @@
         "Direction": {
             "Away": "Away",
             "Direction": "Direction",
+            "Down": "Down",
             "East": "east",
+            "Left": "Left",
             "North": "north",
             "Northeast": "northeast",
             "Northwest": "northwest",
+            "Right": "Right",
             "South": "south",
             "Southeast": "southeast",
             "Southwest": "southwest",
             "Towards": "Towards",
+            "Up": "Up",
             "West": "west"
         },
         "Distance": {
             "0": "0 ft.",
             "10": "10 ft.",
             "15": "15 ft.",
-            "5": "5 ft."
+            "20": "20 ft.",
+            "5": "5 ft.",
+            "DistanceFeet": "{distance} ft."
         },
         "EffectInterface": {
             "Copy": "(Copy)",
@@ -277,6 +298,7 @@
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
+            "Failure": "Failure",
             "Go": "Go",
             "Import": "Import",
             "Max": "Max:",
@@ -285,6 +307,7 @@
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
             "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
+            "None": "None",
             "Ok": "Ok",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
@@ -294,6 +317,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "Skill": "Skill Check",
             "Submit": "Submit",
+            "Success": "Success",
             "Summon": "Summon",
             "Total": "Total",
             "Uncontested": "Uncontested",
@@ -314,6 +338,21 @@
             "Earthquake": "Earthquake (Grovelthrash)",
             "MeldIntoStone": "Meld into Stone (Grovelthrash)",
             "StoneShape": "Stone Shape (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copy Pack ID"
+            }
+        },
+        "Item": {
+            "Condense": "Condense",
+            "SelectAmount": "Select amount to give:",
+            "Send": "Send",
+            "Split": "Split",
+            "SplitSize": "New Quantity:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Export Data (For Sharing)"
         },
         "Journal": {
             "Chat": "View the Cauldron of Plentiful Resources readme here:",
@@ -825,6 +864,12 @@
                 "Evoke": "Evoke Flame Blade",
                 "Scimitar": "Flame Blade Scimitar"
             },
+            "FlamingSphere": {
+                "EndTurn": "Flaming Sphere: End Turn",
+                "Move": "Flaming Sphere: Move",
+                "Ram": "Ram Target?",
+                "RamItem": "Flaming Sphere: Ram"
+            },
             "FlockOfFamiliars": {
                 "Command": "Flock of Familiars: Command",
                 "ReactionUsed": "Familiars are too far or have already used their reaction!",
@@ -1055,6 +1100,13 @@
                 "RestoreHitpoints": "Restore Hitpoints:",
                 "Select": "How would you like to aid?"
             },
+            "Lifesteal": {
+                "HealingType": "Healing Type:",
+                "MaxHPCure": "Max HP Reduction Recovery:",
+                "Name": "Lifesteal",
+                "ReduceMaxHP": "Reduce Max HP:",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
+            },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
             },
@@ -1103,6 +1155,11 @@
             },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
+            },
+            "MastersAmulet": {
+                "Linked": "Amulet has been linked!",
+                "MissingBound": "Target does not have the CPR bound feature!",
+                "Unlinked": "Target is an unlinked token and the link will only work with this token on this scene!"
             },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Maximilian's Earthen Grasp: Crush",
@@ -1284,6 +1341,9 @@
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
             },
+            "ShieldGuardianShield": {
+                "Use": "Shield {name}? Attack Roll: {attack}"
+            },
             "Shove": {
                 "Big": "Target is too big to shove!",
                 "ChooseSkill": "How would you like to contest the shove?",
@@ -1349,6 +1409,10 @@
                 "Sword": "Sword",
                 "UseDefault": "Use previously-saved token configuration:",
                 "Weapon": "What Weapon?"
+            },
+            "Stabilize": {
+                "Stabilized": "Stabilized",
+                "WakeUp": "Hours Until Creature Wakes:"
             },
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
@@ -1601,6 +1665,17 @@
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
             },
+            "WallOfFire": {
+                "CircleFacing": "Which way is the fire facing?",
+                "Diameter": "What diameter?",
+                "Flames": "Flames",
+                "Height": "How tall?",
+                "Inward": "Inward",
+                "Length": "How long?",
+                "Outward": "Outward",
+                "Shape": "What shape?",
+                "Side": "Which side is the fire on?"
+            },
             "WardingBond": {
                 "Damage": "Warding Bond: Damage",
                 "Dismiss": "Warding Bond: Dismiss",
@@ -1608,6 +1683,7 @@
                 "MaxDistance": "Max Distance:"
             },
             "WildShape": {
+                "AllowElementals": "Always allow elementals:",
                 "CustomCompendium": "Custom Wild Shape Compendium:",
                 "Equipment": "What happens to your equipment?",
                 "Ignore": "Ignore CR, Type, & Movement Restrictions:",
@@ -1654,8 +1730,10 @@
             "Critical": "Critical",
             "Failure": "Failure",
             "Fumble": "Fumble",
+            "HasModifers": "Roll has modifers",
             "Hit": "Hit",
             "Miss": "Miss",
+            "PleaseResolve": "please resolve manually before entering total",
             "QuickButtons": {
                 "Label": "Quick Buttons",
                 "Tooltip": "Shortcuts to complete the roll with the desired result"
@@ -1688,6 +1766,11 @@
                     "Label": "Visuals",
                     "Tooltip": "Customize certain visuals"
                 }
+            },
+            "Compendium": {
+                "Apply": "Medkit all compendium documents?",
+                "Done": "Compendium update complete!",
+                "Start": "Updating documents..."
             },
             "Effect": {
                 "Conditions": {
@@ -1761,6 +1844,13 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "You do not have permissions to change this",
+            "Scene": {
+                "Done": "Scene update complete!",
+                "Start": "Updating tokens...",
+                "UpdateAll": "Update all Characterse and NPCs",
+                "UpdateCharacters": "Update all Characters",
+                "UpdateNPCs": "Update all NPCs"
+            },
             "SelectedAutomation": "Selected Automation:",
             "Status": {
                 "0": "Out of Date",
@@ -1778,6 +1868,27 @@
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
                 },
+                "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Configure Automation Info:",
+                    "Check": "Check:",
+                    "Combat": "Combat:",
+                    "Death": "Death:",
+                    "Equipment": "Equipment:",
+                    "HasAnimation": "Has Animation:",
+                    "Identifier": "Identifier:",
+                    "Label": "Dev Tools",
+                    "MacroInfo": "Configure Macro Info:",
+                    "MidiActor": "Midi, Actor:",
+                    "MidiItem": "Midi, Item:",
+                    "Movement": "Movement:",
+                    "Rest": "Rest:",
+                    "Save": "Save:",
+                    "Skill": "Skill:",
+                    "Source": "Source:",
+                    "Tooltip": "Tools for development, you shouldn\\'t be here...",
+                    "Version": "Version:"
+                },
                 "GenericFeatures": {
                     "Label": "Generic Features",
                     "Monster": {
@@ -1793,6 +1904,10 @@
                     "Tooltip": "Information about the current and available automation"
                 },
                 "NPC": {
+                    "Identifier": {
+                        "Label": "Actor Identifier:",
+                        "Tooltip": "This identifier will be used for finding relevant automations that match by name, instead of using the actor's prototype token's name."
+                    },
                     "Label": "NPC",
                     "Tooltip": "Non-Player Character Automations Information"
                 },
@@ -1898,6 +2013,10 @@
                 "9": "All Characters and NPCs",
                 "Hint": "When enabled, generic actions will be added when a token is placed.",
                 "Name": "Add Actions to Tokens"
+            },
+            "addCompendiumButton": {
+                "Hint": "When enabled, a button will be added to compendium headers to copy the id.",
+                "Name": "Compendium ID Button"
             },
             "additionalCompendiums": {
                 "Hint": "Select additional item compendiums to be used by the medkit and adjust their priority.",
@@ -2035,6 +2154,10 @@
                 "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
                 "Name": "Exploding Heals"
             },
+            "exportForSharing": {
+                "Hint": "When enabled, an alternative export button will be added to the item and actor context menu to export an item with descriptions removed. Reload required after enabling.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
@@ -2071,6 +2194,10 @@
                 "Hint": "Item compendium used for certain automations. Ideally should point to your D&D Beyond item compendium.",
                 "Name": "Item Compendium"
             },
+            "itemContext": {
+                "Hint": "When enabled, the item context menu will have additional options (Send, Condense, and Split).",
+                "Name": "Additional Item Context Options"
+            },
             "lastUpdateCheck": {
                 "Hint": "When was the last update check run (in milliseconds). Automatically set.",
                 "Name": "Last Update Check"
@@ -2083,9 +2210,17 @@
                 "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
                 "Name": "Enable Macro Interface"
             },
+            "makeGM": {
+                "Hint": "Become the primary GM.",
+                "Name": "Make GM"
+            },
             "manualRollsEnabled": {
                 "Hint": "Enable CPR's Roll Resolver for Unfulfilled Rolls.",
                 "Name": "Manual Rolls"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "When enabled the Gamemaster fulfils all rolls.",
+                "Name": "Gamemaster Fulfils Rolls"
             },
             "manualRollsInclusion": {
                 "0": "None - No Manual Rolls",
@@ -2125,8 +2260,9 @@
                 "0": "Low",
                 "1": "Medium",
                 "2": "High",
-                "Hint": "Accuracy of movement events, higher accuracy comes at the cost of performance.",
-                "Name": "Movement Event Performance"
+                "3": "Ultra",
+                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.\r\n• Ultra: Full accuracy.\r\n• High: Ignores cover calculation when getting distance.\r\n• Medium: As high, and waypoint movement is ignored, except for the final segment.\r\n• Low: As Medium, and walls are ignored in distance calculations.",
+                "Name": "Movement Event Accuracy"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
@@ -2389,6 +2525,7 @@
             "Discord": "Open Discord Support Channel",
             "Hint": "Open the troubleshooter.",
             "MissingModule": "Cauldron of Plentiful Resources requires the module {module} to be installed!",
+            "MovementLag": "Movement Events appears to be taking a long time! Try setting \"Movement Event Performance\" lower in the CPR general settings.",
             "Open": "Open Troubleshooter:",
             "SaveToFile": "Save to File",
             "Title": "Troubleshooter"

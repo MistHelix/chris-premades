@@ -134,7 +134,7 @@ export class Summons {
         await Summons.dismiss({trigger});
         return true;
     }
-    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier} = {}) {
+    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier, damageFlat = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
         let prof = originItem.actor.system.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
@@ -149,6 +149,7 @@ export class Summons {
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
         if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
+        if (damageFlat) documentData.system.damage.parts[0][0] = damageFlat;
         return genericUtils.mergeObject(documentData, updates, {inplace: false});
     }
     async prepareAllData() {
@@ -264,7 +265,7 @@ export class Summons {
             });
         }
         if (itemUtils.getItemByIdentifier(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
-            let hitDieAmount = parseInt(this.hpFormula.match(/(\d+)d/)[1]);
+            let hitDieAmount = parseInt(this.hpFormula.match(/(\d+)d/)?.[1]) ?? 0;
             let extraHitPoints;
             if (hitDieAmount) extraHitPoints = hitDieAmount * 2;
             let updates = {};
@@ -285,7 +286,7 @@ export class Summons {
             }
             let items = new Set();
             this.sourceActor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i.toObject()));
-            Object?.values(this.updates.actor?.items)?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
+            this.updates.actor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
             if (items.size > 0) items.forEach(i => {
                 i.system.properties.push('mgc');
                 genericUtils.setProperty(updates, 'actor.items[' + i.name + ']', i);
@@ -499,7 +500,7 @@ export class Summons {
         return this.updates.actor?.system?.attributes?.hp?.value ?? this.sourceActor.system.attributes.hp.value;
     }
     get hpFormula() {
-        return this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula;
+        return String(this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula);
     }
     get hpMax() {
         return this.updates.actor?.system?.attributes?.hp?.max ?? this.sourceActor.system.attributes.hp.max;

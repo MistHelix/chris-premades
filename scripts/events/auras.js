@@ -18,9 +18,9 @@ function collectTokenMacros(token, pass, target) {
             let macroList = collectAuraMacros(effect);
             if (!macroList.length) return;
             if (isNaN(distance) && target) {
-                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
-                if (distance < 0) return [];
+                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
             }
+            if (distance < 0) return [];
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
@@ -66,9 +66,9 @@ function collectTokenMacros(token, pass, target) {
             let macroList = collectAuraMacros(item);
             if (!macroList.length) return;
             if (isNaN(distance) && target) {
-                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
-                if (distance < 0) return [];
+                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
             }
+            if (distance < 0) return [];
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
@@ -168,7 +168,6 @@ async function executeMacro(trigger, options) {
 }
 async function executeMacroPass(tokens, pass, token, options) {
     genericUtils.log('dev', 'Executing Aura Macro Pass: ' + pass + ' for ' + token.name);
-    let inCombat = combatUtils.inCombat();
     let triggers = getSortedTriggers(tokens, pass, token);
     let removedEffects = [];
     let effects = actorUtils.getEffects(token.actor).filter(j => j.flags['chris-premades']?.aura);

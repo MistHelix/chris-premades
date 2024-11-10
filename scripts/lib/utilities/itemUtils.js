@@ -3,6 +3,7 @@ import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUt
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
+import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -68,7 +69,7 @@ function getAllItemsByIdentifier(actor, identifier) {
     return actor.items.filter(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getVersion(item) {
-    return item.flags['chris-premades']?.info?.version ?? item._stats?.modifiedTime;
+    return item?.flags['chris-premades']?.info?.version ?? item?._stats?.modifiedTime;
 }
 function getSource(item) {
     return item.flags['chris-premades']?.info?.source;
@@ -84,17 +85,17 @@ async function isUpToDate(item) {
     if (type === 'npc') monster = item.actor.prototypeToken.name;
     switch (source) {
         case 'gambits-premades':
-            if (type === 'character') {
+            if (type === 'character' || item.type === 'spell') {
                 sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
             } else {
-                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
         case 'midi-item-showcase-community':
-            if (type === 'character') {
+            if (type === 'character' || item.type === 'spell') {
                 sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             } else {
-                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
         case 'chris-premades': {
@@ -104,7 +105,7 @@ async function isUpToDate(item) {
         }
         default: {
             let sourceObj = await compendiumUtils.getItemFromCompendium(source, item.name, {ignoreNotFound: true, object: true});
-            sourceVersion = sourceObj?._stats.modifiedTime;
+            sourceVersion = getVersion(sourceObj);
             break;
         }
     }
@@ -161,9 +162,13 @@ function getItemByGenericFeature(actor, key) {
 function isWeaponProficient(item) {
     if (item.system.proficient) return true;
     if (!item.actor) return false;
+    if (item.actor.type === 'npc') return true;
     if (item.actor.system.traits.weaponProf.value.has(item.system.type.baseItem)) return true;
     if (item.actor.system.traits.weaponProf.value.has(CONFIG.DND5E.weaponProficienciesMap[item.system.type.value])) return true;
     return false;
+}
+async function itemUpdate(item) {
+    return await ItemMedkit.itemUpdate(item);
 }
 export let itemUtils = {
     getSaveDC,
@@ -186,5 +191,6 @@ export let itemUtils = {
     getSavedCastData,
     getGenericFeatureConfig,
     getItemByGenericFeature,
-    isWeaponProficient
+    isWeaponProficient,
+    itemUpdate
 };

@@ -17,35 +17,35 @@
             "Source": "{auraName}: Origem"
         },
         "BG3": {
-            "Bleeding": "Sangrando",
-            "ChestTrauma": "Trauma Torácico",
-            "Dazed": "Ofuscado",
-            "GapingWounds": "Feridas Abertas",
-            "Hamstrung": "Hamstrung",
-            "Maimed": "Mutilado",
-            "OffBalance": "Desequilibrado",
-            "WeakGrip": "Aperto Fraco",
-            "WeaponAction": "Ação com Arma",
             "Backbreaker": "Quebra-Costas",
+            "Bleeding": "Sangrando",
             "BraceMelee": "Brace (Corpo a Corpo)",
+            "BraceRanged": "Brace (À Distância)",
+            "ChestTrauma": "Trauma Torácico",
             "Cleave": "Rachar",
             "ConcussiveSmash": "Esmagamento Concussivo",
-            "MaimingStrike": "Golpe Mutilante",
+            "Dazed": "Ofuscado",
             "DisarmingStrike": "Golpe Desarmante",
             "Flourish": "Florescer",
+            "GapingWounds": "Feridas Abertas",
+            "HamstringShot": "Tiro no Tendão",
+            "Hamstrung": "Hamstrung",
             "Heartstopper": "Destruidor de Corações",
             "Lacerate": "Dilacerar",
+            "Maimed": "Mutilado",
+            "MaimingStrike": "Golpe Mutilante",
+            "MobileShot": "Tiro Móvel",
+            "OffBalance": "Desequilibrado",
+            "PiercingShot": "Tiro Perfurante",
             "PiercingStrike": "Golpe Perfurante",
             "PommelStrike": "Golpe com Punho",
             "Prepare": "Preparar",
             "Rush": "Correr",
             "Tenacity": "Tenacidade",
             "Topple": "Derrubar",
+            "WeakGrip": "Aperto Fraco",
             "WeakeningStrike": "Golpe Enfraquecedor",
-            "BraceRanged": "Brace (À Distância)",
-            "HamstringShot": "Tiro no Tendão",
-            "MobileShot": "Tiro Móvel",
-            "PiercingShot": "Tiro Perfurante"
+            "WeaponAction": "Ação com Arma"
         },
         "Backup": {
             "Daily": "Diário",
@@ -112,6 +112,9 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
+            "AttackBonus": "Bônus Ataque:",
+            "Character": "Personagem",
+            "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -143,23 +146,33 @@
                 "Yellow": "Amarelo"
             },
             "CombatOnly": "Habilitar Somente em Combate",
-            "CompendiumName": "Nome no Compendium {option}:",
+            "CompendiumName": "Nome no Compêndio {option}:",
+            "CreatureTypes": "Tipos de Criatura:",
+            "CriticalOnly": "Apenas Críticos:",
+            "DC": "CD:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
+            "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
+            "Distance": "Distância:",
             "Expire": "Expiração:",
             "Formula": "Fórmula:",
+            "HideToken": "Ocultar Token:",
+            "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
             "SaveDC": "CD da Salvaguarda:",
+            "Scale": "Escala:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
-            "SpecificAnimation": "Animação {option}:"
+            "SpecificAnimation": "Animação {option}:",
+            "UseFormula": "Usar Fórmula:"
         },
         "Cover": {
             "Full": "Cobertura Total",
@@ -169,6 +182,7 @@
             "Unknown": "Cobertura Desconhecida"
         },
         "CustomMacros": {
+            "NoIdentifier": "Uma macro registrada não tinha um identificador e foi ignorada!",
             "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
         },
         "CustomTypes": {
@@ -195,21 +209,27 @@
         "Direction": {
             "Away": "Longe",
             "Direction": "Direção",
+            "Down": "Abaixo",
             "East": "leste",
+            "Left": "Esquerda",
             "North": "norte",
             "Northeast": "nordeste",
             "Northwest": "noroeste",
+            "Right": "Direita",
             "South": "sul",
             "Southeast": "sudeste",
             "Southwest": "sudoeste",
             "Towards": "Em direção a",
+            "Up": "Acima",
             "West": "oeste"
         },
         "Distance": {
             "0": "0 pés",
             "10": "10 pés",
             "15": "15 pés",
-            "5": "5 pés"
+            "20": "20 pés",
+            "5": "5 pés",
+            "DistanceFeet": "{distance} pés"
         },
         "EffectInterface": {
             "Copy": "(Cópia)",
@@ -267,7 +287,7 @@
         "Generic": {
             "Actions": "Ações",
             "Available": "Disponível",
-            "CPR": "Chris's Premades",
+            "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancelar",
             "Chat": "Chat",
             "Check": "Teste de Atributo",
@@ -277,6 +297,7 @@
             "Disabled": "Desabilitar",
             "Distance": "Distância",
             "Edit": "Editar",
+            "Failure": "Falha",
             "Go": "Ir",
             "Import": "Importar",
             "Max": "Máx:",
@@ -285,6 +306,7 @@
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
+            "None": "Nenhum(a)",
             "Ok": "Ok",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
@@ -294,6 +316,7 @@
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
             "Submit": "Enviar",
+            "Success": "Sucesso",
             "Summon": "Invocação",
             "Total": "Total",
             "Uncontested": "Não-Contestado",
@@ -311,18 +334,33 @@
             "TemplateEffect": "Modelo de {itemName}"
         },
         "Grovelthrash": {
-              "Earthquake": "Terremoto (Grovelthrash)",
-              "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
-              "StoneShape": "Moldar Rochas (Grovelthrash)"
+            "Earthquake": "Terremoto (Grovelthrash)",
+            "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
+            "StoneShape": "Moldar Rochas (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copiar ID do Compêndio"
+            }
+        },
+        "Item": {
+            "Condense": "Condensar",
+            "SelectAmount": "Selecione a quantidade para dada:",
+            "Send": "Enviar",
+            "Split": "Dividir",
+            "SplitSize": "Nova Quantidade:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Exportar Dados (Para Compartilhamento)"
         },
         "Journal": {
-            "Chat": "Ver o leia-me do Chris's Premades aqui:",
+            "Chat": "Ver o leia-me do Cauldron of Plentiful Resources aqui:",
             "Readme": "Leia-Me",
-            "Welcome": "<p>Obrigado por usar meu módulo! Se você encontrar algum bug ou tiver alguma solicitação, envie uma mensagem para <strong>chrisk123999</strong> no Discord ou faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Como observação, eu geralmente trabalho ao redor de itens que foram importados por meio do módulo DDB importer. Se algo funcionar \"como está\" nesse módulo, é improvável que eu o tenha aqui.</p><p>Para começar, você pode encontrar minhas automações nos compêndios que começam com: \"CPR.\"</p><p>Você também pode clicar no ícone do kit médico na barra de título para atualizar o item com minha automação. Isso preservará sua descrição já presente no item.</p><hr><p>Qualquer item, magia ou recurso adicionado à sua ficha precisa temporariamente de uma descrição. As atualizações dos módulos substituirão os compêndios nos quais estão armazenados. Portanto, as descrições serão extraídas desta entrada de diário. Todas as páginas após esta não serão regeneradas ao atualizar este módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
+            "Welcome": "<p>Obrigado por usar este módulo! Se você encontrar algum bug, faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> ou um bug report no nosso <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Informações adicionais sobre o módulo, incluindo FAQ, Primeiros Passos e informações sobre recursos, estão disponíveis na <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Cauldron of Plentiful Resources Wiki</a>. A wiki fornece explicações, imagens e exemplos que podem responder à maioria das perguntas sobre o módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
         },
         "Light": {
-             "Bright": "Plena",
-             "Dim": "Penumbra"
+            "Bright": "Plena",
+            "Dim": "Penumbra"
         },
         "Macros": {
             "AberrantDragonmark": {
@@ -825,6 +863,12 @@
                 "Evoke": "Evocar Lâmina Flamejante",
                 "Scimitar": "Cimitarra de Lâmina Flamejante"
             },
+            "FlamingSphere": {
+                "EndTurn": "Esfera Flamejante: Fim do Turno",
+                "Move": "Esfera Flamejante: Mover",
+                "Ram": "Forçar Alvo?",
+                "RamItem": "Esfera Flamejante: Forçar"
+            },
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
                 "ReactionUsed": "Os familiares estão muito longe ou já usaram sua reação!",
@@ -1055,6 +1099,12 @@
                 "RestoreHitpoints": "Restaurar Pontos de Vida:",
                 "Select": "Como você quer ajudar?"
             },
+            "Lifesteal": {
+                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "HealingType": "Tipo de Cura:",
+                "ReduceMaxHP": "Reduzir PV Máx.:",
+                "excessAsTemp": "Excesso de Cura como PV Temp.:"
+            },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
             },
@@ -1074,6 +1124,7 @@
                 "NoNearby": "Nenhum aliado com reação pode ver ou ouvir você!",
                 "PushDistance": "O quão longe você empurra o alvo?",
                 "Pushing": "Ataque de Encontrão: Ataque",
+                "SelectDice": "Executar uma manobra com qual categoria de dado de superioridade?",
                 "SelectManeuver": "Qual manobra usar?",
                 "SelectTarget": "Quem você ataca?",
                 "Sweeping": "Ataque Trespassante: Ataque",
@@ -1102,6 +1153,11 @@
             },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
+            },
+            "MastersAmulet": {
+                "Linked": "Amuleto foi vinculado!",
+                "MissingBound": "O alvo não possui o recurso vinculado do CPR!",
+                "Unlinked": "O alvo é um token desvinculado e o link só funcionará com esse token nesta cena!"
             },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Abraço Terrestre de Maximilian: Esmagar",
@@ -1349,6 +1405,10 @@
                 "UseDefault": "Usar configuração de token salva anteriormente:",
                 "Weapon": "Qual Arma?"
             },
+            "Stabilize": {
+                "Stabilized": "Estabilizado",
+                "WakeUp": "Horas Até a Criatura Acordar:"
+            },
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
             },
@@ -1579,9 +1639,9 @@
                 "Select": "Causar dano a uma criatura agarrada?"
             },
             "UndeadFortitude": {
-                "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:",
-                "Name": "Fortitude de Morto-Vivo"
+                "Critical": "Acertos críticos ignoram Fortaleza Imortal:",
+                "DamageTypes": "Tipos de Dano que ignoram Fortaleza Imortal:",
+                "Name": "Fortaleza Imortal"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -1599,6 +1659,17 @@
             "VampiricTouch": {
                 "Attack": "Toque Vampírico: Ataque",
                 "HealingModifier": "0.5"
+            },
+            "WallOfFire": {
+                "CircleFacing": "Para que lado o fogo está voltado?",
+                "Diameter": "Qual diâmetro?",
+                "Flames": "Chamas",
+                "Height": "Qual altura?",
+                "Inward": "Para Dentro",
+                "Length": "Qual comprimento?",
+                "Outward": "Para Fora",
+                "Shape": "Qual formato?",
+                "Side": "De que lado o fogo está?"
             },
             "WardingBond": {
                 "Damage": "Vínculo Protetor: Dano",
@@ -1653,8 +1724,10 @@
             "Critical": "Crítico",
             "Failure": "Falha",
             "Fumble": "Falha Crítica",
+            "HasModifers": "Rolagem tem modificadores",
             "Hit": "Acerto",
             "Miss": "Erro",
+            "PleaseResolve": "Resolva manualmente antes de inserir o total",
             "QuickButtons": {
                 "Label": "Botões Rápidos",
                 "Tooltip": "Atalhos para completar o rolagem com o resultado desejado"
@@ -1687,6 +1760,11 @@
                     "Label": "Visuais",
                     "Tooltip": "Personalize certos visuais"
                 }
+            },
+            "Compendium": {
+                "Apply": "Usar Medkit em todos os documentos do compêndio?",
+                "Done": "Atualização do compêndio concluída!",
+                "Start": "Atualizando documentos..."
             },
             "Effect": {
                 "Conditions": {
@@ -1755,11 +1833,18 @@
             },
             "ModuleIds": {
                 "additionalCompendiums": "Compêndios Adicionais",
-                "chris-premades": "Chris's Premades",
+                "chris-premades": "Cauldron of Plentiful Resources",
                 "gambits-premades": "Gambit's Premades",
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "Você não tem permissão para alterar isso",
+            "Scene": {
+                "Done": "Atualização de cena concluída!",
+                "Start": "Atualizando tokens...",
+                "UpdateAll": "Atualizar todos PJs e PNJs",
+                "UpdateCharacters": "Atualizar todos PJs",
+                "UpdateNPCs": "Atualizar todos PNJs"
+            },
             "SelectedAutomation": "Automação Selecionada:",
             "Status": {
                 "0": "Desatualizado",
@@ -1777,6 +1862,27 @@
                     "Label": "Configuração",
                     "Tooltip": "Configure as partes disponíveis da automação"
                 },
+                "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Configurar Informações de Automação:",
+                    "Check": "Teste:",
+                    "Combat": "Combate:",
+                    "Death": "Morte:",
+                    "Equipment": "Equipmento:",
+                    "HasAnimation": "Tem Animação:",
+                    "Identifier": "Identificador:",
+                    "Label": "Ferramentas de Dev.",
+                    "MacroInfo": "Configurar Informações de Macro:",
+                    "MidiActor": "Midi, Ator:",
+                    "MidiItem": "Midi, Item:",
+                    "Movement": "Movimento:",
+                    "Rest": "Descansar:",
+                    "Save": "Salvaguarda:",
+                    "Skill": "Perícia:",
+                    "Source": "Origem:",
+                    "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
+                    "Version": "Versão:"
+                },
                 "GenericFeatures": {
                     "Label": "Características Genéricas",
                     "Monster": {
@@ -1792,6 +1898,10 @@
                     "Tooltip": "Informações sobre a automação atual e disponível"
                 },
                 "NPC": {
+                    "Identifier": {
+                        "Label": "Identificador do Ator:",
+                        "Tooltip": "Este identificador será usado para encontrar automações relevantes que correspondam por nome, em vez de usar o nome do token protótipo do ator."
+                    },
                     "Label": "PNJ",
                     "Tooltip": "Informações de Automações de Personagens Não-Jogadores"
                 },
@@ -1877,6 +1987,13 @@
             }
         },
         "Settings": {
+            "Permissions": {
+                "1": "Jogador",
+                "2": "Jogador Confiável",
+                "3": "Assistente do MJ",
+                "4": "Mestre do Jogo"
+            },
+            "SelectCompendium": "Selecione um compêndio:",
             "addActions": {
                 "0": "Desabilitado",
                 "1": "Personagens Vinculados",
@@ -1888,16 +2005,13 @@
                 "7": "Personagens Vinculados e PnJs",
                 "8": "Personagens Desvinculados e PnJs",
                 "9": "Todos os Personagens e PnJs",
-                "Name": "Adicionar Ações aos Tokens",
-                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado."
+                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
+                "Name": "Adicionar Ações aos Tokens"
             },
-            "Permissions": {
-                "1": "Jogador",
-                "2": "Jogador Confiável",
-                "3": "Assistente do MJ",
-                "4": "Mestre do Jogo"
+            "addCompendiumButton": {
+                "Hint": "Quando ativado, um botão será adicionado ao cabeçalho dos compêndios para copiar a ID.",
+                "Name": "Botão de ID de Compêndio"
             },
-            "SelectCompendium": "Selecione um compêndio:",
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
@@ -1938,17 +2052,17 @@
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
             },
-            "bg3WeaponActionsEnabled": {
-                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
-                "Name": "Ações de Armas Baldur's Gate 3"
-            },
-              "bg3WeaponActionConfig": {
+            "bg3WeaponActionConfig": {
                 "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
                 "Name": "Configuração Ações de Armas Baldur's Gate 3"
             },
             "bg3WeaponActionUses": {
                 "Hint": "Máximo de usos por descanso curto que a ação de arma pode ser usada.",
                 "Name": "Usos Ação de Arma Baldur's Gate 3"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
+                "Name": "Ações de Armas Baldur's Gate 3"
             },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
@@ -1961,8 +2075,8 @@
             "cleave": {
                 "1": "Habilitar (Qualquer Vida)",
                 "2": "Habilitar (Somente Vida Cheia)",
-                "Name": "DMG Cleave",
-                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide"
+                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide",
+                "Name": "DMG Cleave"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
@@ -2034,6 +2148,10 @@
                 "Hint": "Quando ativado, todas as fórmulas de rolagem de cura serão automaticamente ajustadas para explodir.",
                 "Name": "Curas Explosivas"
             },
+            "exportForSharing": {
+                "Hint": "Quando ativado, um botão de alternativo de exportação será adicionado ao menu do item e do ator, para exportar um item com descrições removidas. É necessário recarregar após ativar.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
@@ -2070,6 +2188,10 @@
                 "Hint": "Compêndio de itens usados para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
                 "Name": "Compêndio de Itens"
             },
+            "itemContext": {
+                "Hint": "Quando habilitado, o menu do item terá opções adicionais (Enviar, Condensar e Dividir).",
+                "Name": "Opções Adicionais de Contexto de Item"
+            },
             "lastUpdateCheck": {
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
@@ -2082,27 +2204,35 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
+            "makeGM": {
+                "Hint": "Torne-se o MJ principal.",
+                "Name": "Tornar-se MJ"
+            },
             "manualRollsEnabled": {
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
                 "Name": "Rolagens Manuais"
             },
+            "manualRollsGMFulfils": {
+                "Hint": "Quando ativado, o Mestre executa todas as rolagens.",
+                "Name": "Mestre Executa Rolagens"
+            },
             "manualRollsInclusion": {
-                "Hint": "Quais rolagens de ator devem ser solicitadas.",
-                "Name": "Inclusão de Rolagens Manuais",
                 "0": "Nenhuma - Sem Rolagens Manuais",
                 "1": "Todas - Solicitação para Qualquer Ator",
                 "2": "Apenas Todos Personagens",
                 "3": "Apenas Todos Vinculados",
                 "4": "Apenas Vinculados e Pertencentes a Jogador",
-                "5": "Todos Pertencentes e Controlados por jogador"
-            },
-            "manualRollsPromptOnMiss": {
-                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
-                "Name": "Solicitar em Erros"
+                "5": "Todos Pertencentes e Controlados por jogador",
+                "Hint": "Quais rolagens de ator devem ser solicitadas.",
+                "Name": "Inclusão de Rolagens Manuais"
             },
             "manualRollsPromptNoData": {
                 "Hint": "Solicita rolagens sem dados, provavelmente usados em macros.",
                 "Name": "Solicitar Sem Dados"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
+                "Name": "Solicitar em Erros"
             },
             "manualRollsUsers": {
                 "Hint": "Configura quais usuários usam Rolagens Manuais.",
@@ -2124,8 +2254,9 @@
                 "0": "Baixo",
                 "1": "Médio",
                 "2": "Alto",
-                "Hint": "Precisão de eventos de movimento, maior precisão tem o custo do desempenho.",
-                "Name": "Desempenho de Eventos de Movimento"
+                "3": "Ultra",
+                "Hint": "Modo de precisão para eventos de movimento. Modos de precisão mais alto terão um impacto maior no desempenho, especialmente em hardware menos potente.\r\n• Ultra: Precisão total.\r\n• Alta: Ignora o cálculo de cobertura ao calcular a distância.\r\n• Média: Como Alta, porém o movimento da parada é ignorado, exceto o segmento final.\r\n• Baixo: Como Média, porém as paredes são ignoradas nos cálculos de distância.",
+                "Name": "Precisão de Eventos de Movimento"
             },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
@@ -2151,7 +2282,7 @@
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
                 "Name": "Substituir Ícones de Status"
             },
-             "seenTour": {
+            "seenTour": {
                 "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
                 "Name": "Aviso do Tour"
             },
@@ -2212,7 +2343,7 @@
         },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
-            "Description": "Invoque um(a) {name} usando o Chris's Premades.",
+            "Description": "Invoque um(a) {name} usando o Cauldron of Plentiful Resources.",
             "Time": {
                 "Day": "1 Dia",
                 "Hour": "1 Hora",
@@ -2328,7 +2459,7 @@
         },
         "Tour": {
             "0": {
-                "Content": "Este tour irá guiá-lo através do uso de alguns dos principais recursos do Chris's Premades.",
+                "Content": "Este tour irá guiá-lo através do uso de alguns dos principais recursos do Cauldron of Plentiful Resources.",
                 "Title": "Bem-Vindo(a)!"
             },
             "1": {
@@ -2375,19 +2506,20 @@
                 "Content": "Por exemplo, a magia \"Dragon's Breath\" criará um recurso temporário chamado \"Sopro de Dragão\" no ator alvo.\nO preenchimento desta página do diário preencherá a descrição quando ela for criada.",
                 "Title": "Diário de Descrições"
             },
-            "Chat": "<hr>Veja um tour guiado pelo Chris's Premades aqui:<br><button type=\"button\">Começar Tour</button>",
-            "Description": "Faça um tour pelo Chris's Premades.",
-            "Hint": "Comece um tour guiado pelo Chris's Premades.",
-            "Title": "Tour do Chris's Premades",
+            "Chat": "<hr>Veja um tour guiado pelo Cauldron of Plentiful Resources aqui:<br><button type=\"button\">Começar Tour</button>",
+            "Description": "Faça um tour pelo Cauldron of Plentiful Resources.",
+            "Hint": "Comece um tour guiado pelo Cauldron of Plentiful Resources.",
+            "Title": "Tour do Cauldron of Plentiful Resources",
             "TourFeatures": "Recursos do Tour"
         },
         "Troubleshooter": {
             "Clipboard": "Texto copiado para a área de transferência!",
             "CopyToClipboard": "Copiar para a Área de Transferência",
-            "DisabledModule": "Chris's Premades requer que o módulo {module} esteja habilitado!",
+            "DisabledModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja habilitado!",
             "Discord": "Abra Canal de Suporte do Discord",
             "Hint": "Abre o troubleshooter.",
-            "MissingModule": "Chris's Premades requer que o módulo {module} esteja instalado!",
+            "MissingModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja instalado!",
+            "MovementLag": "Os Eventos de Movimento parecem estar demorando muito! Tente definir \"Desempenho de Eventos de Movimento\" mais baixo nas configurações gerais do CPR.",
             "Open": "Abrir Troubleshooter:",
             "SaveToFile": "Salvar em Arquivo",
             "Title": "Troubleshooter"

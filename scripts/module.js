@@ -32,6 +32,7 @@ import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
 import {abilityCheck} from './events/abilityCheck.js';
+import {itemDirectory} from './applications/itemDirectory.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -45,6 +46,10 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
+    if(utils.genericUtils.getCPRSetting('exportForSharing')) {
+        Hooks.on('getItemDirectory5eEntryContext', itemDirectory.itemContext);
+        Hooks.on('getActorDirectoryEntryContext', itemDirectory.actorContext);
+    }
 });
 Hooks.once('ready', () => {
     custom.ready();
@@ -67,6 +72,7 @@ Hooks.once('ready', () => {
     abilitySave.patch();
     skillCheck.patch();
     abilityCheck.patch();
+    if (utils.genericUtils.getCPRSetting('manualRollsGMFulfils')) rollResolver.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
     tours.checkTour();
@@ -79,5 +85,5 @@ globalThis['chrisPremades'] = {
     Teleport,
     utils,
     macros,
-    settingButton
+    settingButton,
 };

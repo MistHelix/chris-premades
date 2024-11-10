@@ -1,25 +1,21 @@
 {
-  "folder": "OU0OTCbfs088RoH0",
-  "name": "Giant's Might",
+  "name": "Flaming Sphere: Move",
   "type": "feat",
-  "_id": "5up3Wiyv0hC6eaRy",
-  "img": "icons/skills/social/intimidation-impressing.webp",
+  "img": "icons/magic/light/explosion-star-orange.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
+    "source": {},
     "activation": {
       "type": "bonus",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -27,18 +23,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
-      "value": 4,
-      "max": "@prof",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -48,8 +44,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": null,
+    "actionType": "util",
     "attack": {
       "bonus": "",
       "flat": false
@@ -72,7 +68,7 @@
     },
     "summons": null,
     "type": {
-      "value": "class",
+      "value": "spellFeature",
       "subtype": ""
     },
     "prerequisites": {
@@ -86,46 +82,23 @@
     }
   },
   "effects": [],
+  "folder": null,
   "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "chris-premades": {
       "info": {
-        "identifier": "giantsMight",
-        "version": "0.12.52",
+        "identifier": "flamingSphereMove",
         "source": "chris-premades",
-        "hasAnimation": true
+        "version": "1.0.25"
       },
       "macros": {
         "midi": {
           "item": [
-            "giantsMight"
+            "flamingSphereMove"
           ]
         }
-      },
-      "config": {
-        "playAnimation": true
       }
     }
   },
-  "_key": "!items!5up3Wiyv0hC6eaRy"
+  "_id": "1UUcslLwCQJDV1AP",
+  "_key": "!items!1UUcslLwCQJDV1AP"
 }

@@ -17,7 +17,7 @@ function getTokensInTemplate(template) {
                     x: tokx + x * size - tempx,
                     y: toky + y * size - tempy
                 };
-                let contains = object.shape.contains(curr.x, curr.y);
+                let contains = object.shape?.contains(curr.x, curr.y);
                 if (contains) {
                     tokens.add(token.object);
                     continue;
@@ -29,7 +29,7 @@ function getTokensInTemplate(template) {
 }
 function getTemplatesInToken(token) {
     let templates = new Set();
-    let scene = token.document.parent;
+    let scene = token.document?.parent;
     if (!scene) return templates;
     let {size} = scene.grid;
     let {width, height, x: tokx, y: toky} = token.document;
@@ -44,7 +44,7 @@ function getTemplatesInToken(token) {
                     x: tokx + x * size - tempx,
                     y: toky + y * size - tempy
                 };
-                let contains = object.shape.contains(curr.x, curr.y);
+                let contains = object.shape?.contains(curr.x, curr.y);
                 if (contains) {
                     templates.add(template);
                     continue;
@@ -153,7 +153,7 @@ function getIntersections(templateObj, A, B, boolOnly = false) {
         };
         let intersections = templateObj.shape.segmentIntersections(adjustedA, adjustedB);
         if (boolOnly) return intersections.length;
-        return intersections;
+        return intersections.map(i => ({x: i.x + templateObj.center.x, y: i.y + templateObj.center.y}));
     }
     let intersections = [];
     let points = templateObj.shape.points;

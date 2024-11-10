@@ -1,3 +1,488 @@
+# 1.0.40 Release:
+## API Bug Fixes:
+- Ability Check and Saving Throw Events
+
+# 1.0.39 Release:
+## Update Notes:
+- Condition Resistance and Condition Vulnerability now works with Midi-Qol overtime effects.
+## Bug Fixes:
+- Lifesteal
+
+# 1.0.38 Release:
+## API Bug Fixes:
+- Macro Registration
+
+# 1.0.37 Release:
+## New Generic Monster Features:
+- Shield Guardian: Shield & Spell Storing
+## Updated Content:
+- Shield Guardian: Bound & Regeneration
+- Master's Amulet
+## Bug Fixes:
+- Wild Shape
+- Pass without Trace
+- Ring of Spell Storing
+
+# 1.0.36 Release:
+## Bug Fixes:
+- Agent of Order: Stasis Strike
+- Breath of the Dragon
+- Call Lightning
+- Channel Divinity: Radiance of the Dawn
+- Cloudkill
+- Dawn
+- Dragonborn Breath Weapons
+- Frost Fingers
+- Guardian of Faith
+- Hail of Thorns
+- Holy Weapon
+- Lightning Arrow
+- Mind Sliver
+- Monster Feature: Charge
+- Monster Feature: Shield Bash
+- Monster Feature: Thunderous Strike
+- Moonbeam
+- Potion of Poison
+- Primal Companion
+- Rime's Binding Ice
+- Sickening Radiance
+- Storm Sphere
+- Summon Draconic Spirit
+- Summon Fiend
+- Vitriolic Sphere
+- Wild Surge
+- Javelin of Lightning
+- Lifesteal
+- Alchemical Savant
+- All-Purpose Tool
+- Crusader's Mantle
+- Dragon-Touched Focus (Stirring / Chromatic)
+- Empowered Evocation
+- Enhanced Bond
+- Hearth of Moonlight and Shadow
+- Pass Without Trace
+- Potent Spellcasting
+
+## Update Notes:
+- Removed Build-A-Bonus as a requirement.
+
+# 1.0.35 Release:
+## Update Notes:
+- Added the ability to register CPR macros via the API.
+- Added an option to add additional item context choices (Send, Condense, and Split).
+- Added an option to export items and actors which also removes all descriptions.
+
+# 1.0.34 Release:
+## New Monster Content:
+- Lifesteal (Generic Monster Feature)
+## Bug Fixes:
+- Infused Strikes
+- Crown of Madness
+
+# 1.0.33 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.32 Release:
+## Update Notes:
+- Added Medkit button to scenes and compendiums.
+- Added compendium id button setting.
+## Bug Fixes
+- Savage Attacker
+- Combat Events
+- Pariah's Shield
+- Runic Shield
+- Ready Spell
+
+# 1.0.31 Release:
+## Bug Fixes
+- Ability Check Event
+## Update Notes:
+- Updated French translations. Thanks SooZyx
+
+# 1.0.30 Release:
+## Bug Fixes:
+- Movement Event
+- Prone On Hit Macro
+
+# 1.0.29 Release:
+## New Monster Content:
+- Dune Mimic: Adhesive and Pseudopod
+- Giant Mimic: Adhesive and Pseudopod
+- Hoard Mimic: Caustic Mist and Pseudopod
+- Mimic: Adhesive and Pseudopod
+- Minotaur: Charge and Gore
+- Spitting Mimic: Adhesive, Pseudopods, and Spit Acid
+## Update Notes:
+- Condition Resistance and Condition Vulnerability will now take into account the prone condition when it's being applied via the CPR "proneOnFail" macro.
+
+# 1.0.28 Release:
+## New Content:
+- Mystery Key
+## Bug Fixes:
+- Cloudkill
+- Transmuted Spell
+- Item Medkit
+
+# 1.0.27 Release:
+## Bug Fixes:
+- Flaming Sphere
+
+# 1.0.26 Release:
+## Bug Fixes:
+- Flaming Sphere
+
+# 1.0.25 Release:
+## New Content:
+- Flaming Sphere
+## Bug Fixes:
+- Item Medkit
+- Summons
+- Spiritual Weapon
+- Fire Rune
+- Auras (Thanks costonb)
+
+# 1.0.24 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.23 Release:
+## Bug Fixes:
+- Item Medkit
+- Giant's Might
+- Region Handling for GPS
+
+# 1.0.22 Release:
+## Bug Fixes:
+- Manual Rolls
+- Item Medkit
+- Generic Features
+
+# 1.0.21 Release:
+## Bug Fixes:
+- Item Medkit
+- Wall of Fire
+
+# 1.0.20 Release:
+## Bug Fixes:
+- Item Medkit
+- Wall of Fire
+- Manual Rolls
+
+# 1.0.19 Release:
+## New Content:
+- Wall of Fire
+## Bug Fixes:
+- Item Medkit
+- Spike Growth
+## API Bug Fixes:
+- Template and Region Combat Start and Combat End
+
+# 1.0.18 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.17 Release:
+## Updated Content:
+- Scorching Ray (new medkit config options)
+## Bug Fixes:
+- Metamagic: Extended Spell
+- Scorching Ray
+- Magic Missile
+- Eldritch Blast
+- Item Medkit
+## Update Notes:
+- Greatly improved movement listener performance (thanks thatlonelybugbear)
+## API Updates:
+- Added Region Events
+
+# 1.0.16 Release:
+## Bug Fixes:
+- Death Burst Generic Monster Feature (You will need to re-apply this generic monster feature)
+- Movement Event
+- Effect Interface
+- Item Medkit
+- Manual Rolls
+
+# 1.0.15 Release:
+## Bug Fixes:
+- Item Medkit
+- Colossus Slayer
+- Arcane Jolt
+- Spike Growth
+- Sacred Weapon
+- Vampiric Touch
+
+# 1.0.14 Release:
+## New Content:
+- Colossus Slayer
+
+# 1.0.13 Release:
+## Bug Fixes:
+- Song of Defense
+- Summoning
+- Crosshairs
+- Gaseous Form
+- Javelin of Lightning
+- Wild Surge
+- Equipment Event
+## Update Notes:
+- Effect Interface now properly visible/usable by non-GMs
+
+# 1.0.12 Release:
+## Bug Fixes:
+- Bad News (Exandria)
+- Blunderbuss (Exandria)
+- Musket (Exandria)
+- Palm Pistol (Exandria)
+- Pepperbox (Exandria)
+- Pistol (Exandria)
+- Mighty Summoner
+## Update Notes:
+- Additional Compendiums will now sort checked compendia to the top, then sort by priority (thanks CaiusMartius)
+
+# 1.0.11 Release:
+## New Content:
+- Remarkable Recovery
+- Last Stand Armor
+- Titanstone Knuckles
+- Stabilize
+## Bug Fixes:
+- Troubleshooter
+- Item Medkit
+- Banishment
+- Enlarge / Reduce
+## Update Notes:
+- Updated Changelog
+## API Updates:
+- Added Death Event
+## API Bug Fixes:
+- Rest Event
+
+# 1.0.10 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.9 Release:
+## Bug Fixes:
+- NPC Actor Medkit
+
+# 1.0.8 Release:
+## New Content:
+- Sharpshooter
+
+## Bug Fixes:
+- Breath of the Dragon
+
+## Update Notes:
+- NPC Actor Medkit is now functioning.
+
+# 1.0.7 Release:
+## New Content:
+- Martial Adept
+- Superior Technique
+
+## Bug Fixes:
+- Rime's Binding Ice
+- Eldritch Cannon
+- Elemental Weapon
+
+# 1.0.6 Release:
+## Bug Fixes:
+- Maelstrom Aura
+- Item Medkit
+
+# 1.0.5 Release:
+## Bug Fixes:
+- Event API
+- Item Medkit
+- Damage Turn Start Generic Monster Features
+- Arcane Jolt
+- Infectious Fury
+- Aura of Conquest
+- Planer Wanderer
+
+# 1.0.4 Release:
+## Updated Content:
+- Critical Role Firearm Items
+
+## Bug Fixes:
+- Unarmed Strike
+- Event System
+
+# 1.0.3 Release:
+## Update Notes:
+- Added support for GPS and MISC monster automations for the item Medkit.
+
+# 1.0.2 Release
+## Updated Content:
+- Critical Role Gunslinger
+- Critical / Fumble Table
+
+## Bug Fixes:
+- Brace
+- Gaseous Form
+- Other Miscellaneous Fixes
+
+## Update Notes:
+- This update slight refactor to the underlying event system, do not update to this version right before a game.
+
+# 1.0.1 Release
+## Update Notes:
+- Fixed missing module name strings.
+
+# Cauldron of Plentiful Resources 1.0.0 Release!
+Cauldron of Plentiful Resources (Chris's Premades) has finally reached full v12 compatibility, and it's 1.0.0 release!
+### *Why the name change?*
+Chris started the module Chris's Premades to more easily share macros he had made, but the project has expanded since, and the module has multiple authors now, Autumn and, most recently, Michael. Michael has done a *huge* amount of work to help get Cauldron of Plentiful Resources to v12, and has improved and expanded many features.
+### *What took so long???*
+For the switch the v12, we decided to do a near-complete re-write of the module. Our best practices have changed and we've learned a lot in a year-and-a-half since the module was first published. This doesn't mean too much from the user's perspective, but on the back end, the code runs differently and is much cleaner.
+## Notes for migration
+***Any items from v11 Chris's Premades will not work in 1.0.0 of Cauldron of Plentiful Resources***. We recommend starting with fresh actors/items on v12 if you're migrating your world. Medkitting old items may have mixed results. ***Any customized macros from v11 will also not work***. All helpers have changed slightly. There is documentation on this in the Cauldron of Plentiful Resources discord server.
+## New Content:
+- All Purpose Tool
+- Armor of Safeguarding
+- Blessed Healer
+- Danoth's Visor
+- Disciple of Life
+- Earth Elemental Myrmidon: Thunderous Strike
+- Effect Interface (store custom effects in the sidebar, set them as Status Effects if desired, etc.)
+- Eldritch Claw Tattoo
+- Generic Monster Features: 
+    - Ability Drain
+    - Advantage Damage Bonus
+    - Auto Grapple
+    - Damage Turn Start
+    - Death Burst
+    - Enlarge
+    - Martial Advantage
+    - Parry
+    - Spell Turning
+    - Sunlight Sensitivity
+    - Pack Tactics
+    - Reduce
+    - Regeneration
+    - Swarm Damage
+    - Touch Damage
+- Grappler
+- Guardian Emblem
+- Hobgoblin Devastator: Army Arcana & Devastating Bolt
+- Hobgoblin Warlord: Shield Bash
+- Infuse Item: Enhanced Arcane Focus (Thanks dndcodemonkey)
+- Mighty Summoner
+- Pariah's Shield
+- Supreme Healing
+- Tavern Brawler
+- Unarmed Fighting Style
+- Wings of Flying
+- Wizard Evoker: Sculpted Explosion
+## Not-yet-updated Content:
+- Critical Role Firearms
+- Various specific Monster Features
+
+
+# 0.11.15 Release:
+## Update Notes:
+- Limited max D&D version to 3.2.1. Do not update your D&D version at this time if you are using this module.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- The V12 update is a work in progress.
+
+# 0.11.14 Release:
+## Update Notes:
+- Limited max D&D version to 3.1.2. Do not update your D&D version at this time if you are using this module.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- The V12 update is a work in progress.
+
+# 0.11.13 Release:
+## Bug Fixes:
+- Spike Growth
+- Blessing of the Forge (Thanks Elfrey)
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.12 Release:
+## Bug Fixes:
+- Song of Victory
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.11 Release:
+## Bug Fixes:
+- Song of Victory
+- Conjure Spells: overwrite initiative configuration (Thanks Elfrey)
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.10 Release:
+## Bug Fixes:
+- Create Eldritch Cannon
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.9 Release:
+## Bug Fixes:
+- Piercing Strike
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.8 Release:
+## Bug Fixes:
+- Enhanced Weapon
+- Radiant Weapon
+- Repeating Shot
+- Returning Weapon
+- Hybrid Transformation
+- Blessing of the Forge
+- Wildshape
+- Trickshot
+- Psychic Blades
+- Create Pact weapon
+- Cleave
+- Oil of Sharpness
+- Elemental Weapon
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.7 Release:
+## Bug Fixes:
+- Updated functions involving addDependents to use addDependent.
+
+## Update Notes:
+- Updated minimum versions of Midi-QOL, DAE, and Times Up.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- DND 3.2.0 has unknown compatibility and is not officially supported at this time, use at your own risk.
+
+# 0.11.6 Release:
+## Bug Fixes:
+- Added missing spell item for Globe of Invulnerability.
+## Update Notes:
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+
+# 0.11.5 Release:
+## New Content:
+- Artillerist Artificer: Eldritch Cannen, Explosive Cannon, Fortified Position
+## Update Notes:
+- Edited module and settings check
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+
 # 0.11.4 Release:
 ## Bug Fixes:
 - Regeneration

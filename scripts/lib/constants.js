@@ -16,7 +16,8 @@ let packs = {
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
     monsterFeatures: 'chris-premades.CPRMonsterFeatures',
-    miscellaneous: 'chris-premades.CPRMiscellaneous'
+    miscellaneous: 'chris-premades.CPRMiscellaneous',
+    thirdPartyFeats: 'chris-premades.CPRThirdPartyFeats'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -54,6 +55,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyItems = 'world.cpr-3rd-party-items';
         packs.monsterFeatures = 'world.cpr-monster-features';
         packs.miscellaneous = 'world.cpr-miscellaneous';
+        packs.thirdPartyFeats = 'world.cpr-3rd-party-feats';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -80,6 +82,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
         packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
+        packs.thirdPartyFeats = 'chris-premades.CPRThirdPartyFeats';
     }
 }
 const attacks = [
@@ -116,6 +119,7 @@ const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const abilityOptions = () => Object.values(CONFIG.DND5E.abilities).map(i => ({label: i.label, value: i.abbreviation}));
+const healingTypeOptions = () => Object.entries(CONFIG.DND5E.healingTypes).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -419,5 +423,6 @@ export let constants = {
     sizes,
     itemTypes,
     tempConditionIcon,
-    abilityOptions
+    abilityOptions,
+    healingTypeOptions
 };

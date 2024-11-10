@@ -16,6 +16,7 @@ import {initiative} from './extensions/initiative.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {actions} from './extensions/actions.js';
+import {item} from './applications/item.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -572,7 +573,7 @@ export function registerSettings() {
         key: 'classSpellList',
         type: String,
         default: null,
-        category: 'compendium',
+        category: 'general',
         select: true
     });
     let oldAddActions;
@@ -669,6 +670,7 @@ export function registerSettings() {
             0: 'CHRISPREMADES.Settings.movementPerformance.0',
             1: 'CHRISPREMADES.Settings.movementPerformance.1',
             2: 'CHRISPREMADES.Settings.movementPerformance.2',
+            3: 'CHRISPREMADES.Settings.movementPerformance.3'
         }
     });
     addSetting({
@@ -833,6 +835,44 @@ export function registerSettings() {
             4: 'CHRISPREMADES.Settings.criticalFumbleMode.4',
             5: 'CHRISPREMADES.Settings.criticalFumbleMode.5',
             6: 'CHRISPREMADES.Settings.criticalFumbleMode.6',
+        }
+    });
+    addSetting({
+        key: 'makeGM',
+        type: Object,
+        default: null,
+        category: 'development'
+    });
+    addSetting({
+        key: 'manualRollsGMFulfils',
+        type: Boolean,
+        default: false,
+        category: 'manualRolls',
+        onChange: (value) => rollResolver.patch(value)
+    });
+    addSetting({
+        key: 'addCompendiumButton',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
+    addSetting({
+        key: 'exportForSharing',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
+    addSetting({
+        key: 'itemContext',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: (value) => {
+            if (value) {
+                Hooks.on('dnd5e.getItemContextOptions', item.send);
+            } else {
+                Hooks.off('dnd5e.getItemContextOptions', item.send);
+            }
         }
     });
 }

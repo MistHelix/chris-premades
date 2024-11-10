@@ -9,7 +9,7 @@ async function addOrUpdate(item, updates, options, id) {
     if ((previouslyEquipped != currentlyEquipped) && item.type === 'weapon' && genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.changeItem(item, currentlyEquipped);
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
     if (!identifier) return;
-    let equipmentData = custom.customMacroList.find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
+    let equipmentData = custom.getCustomMacroList().find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
     if (!equipmentData) return;
     let currentlyAttuned = updates.system?.attuned ?? item.system.attuned;
     let previouslyAttuned = item.system?.attuned;
@@ -67,7 +67,7 @@ async function addOrUpdate(item, updates, options, id) {
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
-            if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
+            if (value.duration) itemData.system.duration = value.duration;
             if (value.translate) itemData.name = genericUtils.translate(value.translate);
             if (value.override) genericUtils.mergeObject(itemData, value.override);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);

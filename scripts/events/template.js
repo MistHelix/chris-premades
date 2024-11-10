@@ -18,7 +18,10 @@ function collectTemplatesMacros(templates, pass, token) {
         if (!templateMacros.length) return;
         let trigger = {
             entity: template,
-            castData: templateUtils.getCastData(template),
+            castData: {
+                castLevel: templateUtils.getCastLevel(template),
+                saveDC: templateUtils.getSaveDC(template)
+            },
             macros: templateMacros,
             name: templateUtils.getName(template).slugify(),
             token: token
@@ -82,6 +85,7 @@ async function executeMacroPass(templates, pass, token, options) {
     let triggers = getSortedTriggers(templates, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i, options);
+    return triggers.length;
 }
 /*function preUpdateTemplate(template, updates, context, userId) {
     if (!socketUtils.isTheGM()) return;

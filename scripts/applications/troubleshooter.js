@@ -1,6 +1,7 @@
+import {custom} from '../events/custom.js';
 import {genericUtils} from '../utils.js';
 let names = {
-    'ATL': 'Advanced Token Effects',
+    'ATL': 'Active Token Effects',
     'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
     'about-time': 'About Time',
     'animated-spell-effects-cartoon': 'Animated Spell Effects: Cartoon',
@@ -33,7 +34,12 @@ let names = {
     'gambits-premades': 'Gambit\'s Premades',
     'midi-item-showcase-community': 'Midi Item Showcase - Community',
     'automated-conditions-5e': 'Automated Conditions 5e',
-    'bugs': 'Bugbear\'s Scripts'
+    'bugs': 'Bugbear\'s Scripts',
+    'multilevel-tokens': 'Multilevel Tokens',
+    'monks-wall-enhancement': 'Monk\'s Wall Enhancement',
+    'simbuls-cover-calculator': 'Simbul\'s Cover Calculator',
+    'tokencover': 'Alternative Token Cover',
+    'levelsautocover': 'Levels - Automatic Cover Calculator'
 };
 let optionalModules = [
     'ATL',
@@ -72,7 +78,8 @@ let incompatibleModules = [
     'ready-set-roll-5e',
     'retroactive-advantage-5e',
     'rollgroups',
-    'wire'
+    'wire',
+    'multilevel-tokens'
 ];
 let defunctModules = [
     'itemacro',
@@ -86,7 +93,14 @@ let defunctModules = [
 ];
 let otherModules = [
     'automated-conditions-5e',
-    'bugs'
+    'bugs',
+    'autoanimations',
+    'monks-wall-enhancement'
+];
+let coverModules = [
+    'levelsautocover',
+    'simbuls-cover-calculator',
+    'tokencover'
 ];
 export async function run() {
     let output = '';
@@ -115,9 +129,9 @@ export async function run() {
     addLine('Language: ' + game.settings.get('core', 'language'));
     let cpr = game.modules.get('chris-premades');
     if (cpr.version === '#{VERSION}#') {
-        addLine('Cauldron of Plentiful Resources: Development');
+        addLine('Cauldron of Plentiful Resources Version: Development');
     } else {
-        addLine('Cauldron of Plentiful Resources: ' + game.modules.get('chris-premades').version);
+        addLine('Cauldron of Plentiful Resources Version: ' + game.modules.get('chris-premades').version);
     }
     addLine('');
     addLine('/////////////// Required Modules ///////////////');
@@ -173,6 +187,14 @@ export async function run() {
     cprSettings.forEach(i => {
         addLine(genericUtils.translate('CHRISPREMADES.Settings.' + i[1].key + '.Name') + ': ' + game.settings.get('chris-premades', i[1].key));
     });
+    let customMacros = custom.getCustomMacroList();
+    if (customMacros.length) {
+        addLine('');
+        addLine('/////////////// CPR Custom Macros ///////////////');
+        customMacros.forEach(i => {
+            addLine(' - ' + i.identifier);
+        });
+    }
     if (game.modules.get('midi-qol')?.active) {
         addLine('');
         addLine('/////////////// Midi-Qol Settings ///////////////');
@@ -196,7 +218,111 @@ export async function run() {
         addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
-        addLine('Auto Roll Damage: ' + midiSettings.autoRollDamage);
+        addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
+        addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
+        addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
+    }
+    try {
+        if (game.modules.get('levelsautocover')?.active) {
+            addLine('');
+            addLine('/////////////// Levels - Automatic Cover Calculator Settings ///////////////');
+            addLine('API Mode Enabled: ' + game.settings.get('levelsautocover', 'apiMode'));
+            addLine('Tokens Provide Cover: ' + game.settings.get('levelsautocover', 'tokensProvideCover'));
+            addLine('Active Effects Enabled: ' + game.settings.get('levelsautocover', 'enableActiveEffect'));
+            addLine('Precision: ' + game.settings.get('levelsautocover', 'coverRestriction'));
+        }
+        if (game.modules.get('simbuls-cover-calculator')?.active) {
+            addLine('');
+            addLine('/////////////// Simbul\'s Cover Calculator Settings ///////////////');
+            addLine('Computation Mode: ' + game.settings.settings.get('simbuls-cover-calculator.losSystem').choices[game.settings.get('simbuls-cover-calculator', 'losSystem')]);
+            addLine('Compute on Target: ' + game.settings.get('simbuls-cover-calculator', 'losOnTarget'));
+            addLine('Tile Cover: ' + game.settings.get('simbuls-cover-calculator', 'losWithTiles'));
+            addLine('Token Cover: ' + game.settings.get('simbuls-cover-calculator', 'losWithTokens'));
+            addLine('Cover Application: ' + game.settings.settings.get('simbuls-cover-calculator.coverApplication').choices[game.settings.get('simbuls-cover-calculator', 'coverApplication')]);
+        }
+        if (game.modules.get('tokencover')?.active) {
+            addLine('');
+            addLine('/////////////// Alternative Token Cover Settings ///////////////');
+            addLine('Viewer Points: ' + game.settings.settings.get('tokencover.los-points-viewer').choices[game.settings.get('tokencover', 'los-points-viewer')]);
+            addLine('Large Token Subtargeting: ' + game.settings.get('tokencover', 'los-large-target'));
+            addLine('Target Points: ' + game.settings.settings.get('tokencover.los-points-target').choices[game.settings.get('tokencover', 'los-points-target')]);
+            addLine('3D Points Enabled: ' + game.settings.get('tokencover', 'los-points-3d'));
+            addLine('Use Cover Effect: ' + game.settings.get('tokencover', 'use-cover-effects'));
+            addLine('Effect When Targeting: ' + game.settings.get('tokencover', 'cover-effects-targeting'));
+        }
+        if (game.modules.get('monks-wall-enhancement')?.active) {
+            addLine('');
+            addLine('/////////////// Monk\'s Wall Enhancement Settings ///////////////');
+            addLine('Allow One Way Doors: ' + game.settings.get('monks-wall-enhancement', 'allow-one-way-doors'));
+        }
+    } catch (error) { /* empty */ }
+    let scene = canvas.scene;
+    if (scene) {
+        addLine('');
+        addLine('/////////////// Scene Details ///////////////');
+        addLine('Drawings: ' + scene.drawings.size);
+        addLine('Lights: ' + scene.lights.size);
+        addLine('Notes: ' + scene.notes.size);
+        addLine('Regions: ' + scene.regions.size);
+        addLine('Sounds: ' + scene.sounds.size);
+        addLine('Templates: ' + scene.templates.size);
+        addLine('Tiles: ' + scene.tiles.size);
+        addLine('Tokens: ' + scene.tokens.size);
+        let nonActors = scene.tokens.filter(i => !i.actor);
+        addLine('Actorless Tokens: ' + nonActors.length);
+        addLine('Walls: ' + scene.tokens.size);
+        addLine('Global Light: ' + scene.globalLight);
+    }
+    addLine('');
+    addLine('/////////////// Game Details ///////////////');
+    addLine('Actors: ' + game.actors.size);
+    addLine('Invalid Actors: ' + game.actors.invalidDocumentIds.size);
+    addLine('Items: ' + game.items.size);
+    addLine('Invalid Items: ' + game.items.invalidDocumentIds.size);
+    addLine('Scenes: ' + game.scenes.size);
+    addLine('Invalid Scenes: ' + game.scenes.invalidDocumentIds.size);
+    addLine('Tables: ' + game.tables.size);
+    addLine('Invalid Tables: ' + game.tables.invalidDocumentIds.size);
+    addLine('Macros: ' + game.macros.size);
+    addLine('Invalid Macros: ' + game.macros.invalidDocumentIds.size);
+    let selectedTokens = canvas.tokens.controlled;
+    if (selectedTokens.length) {
+        let token = selectedTokens[0];
+        addLine('');
+        addLine('/////////////// Token Details ///////////////');
+        if (token.document) {
+            addLine('Name: ' + token.document.name);
+            addLine('Linked: ' + token.document.actorLink);
+            let detectionModes = token.document.detectionModes;
+            if (!detectionModes.length) {
+                addLine('Vision Enabled: false');
+            } else {
+                detectionModes.forEach(i => {
+                    addLine(i.id.capitalize() + ': ' + i.enabled);
+                });
+            }
+            addLine('Size: ' + token.document.width);
+            addLine('Scale: ' + token.document.texture.scaleX);
+            addLine('Uuid: ' + token.document.uuid);
+        }
+        if (!token.actor) {
+            addLine('Missing Actor: true');
+        } else {
+            addLine('');
+            addLine('/////////////// Actor Details ///////////////');
+            addLine('Name: ' + token.actor.name);
+            addLine('Type: ' + token.actor.type);
+            addLine('Items: ' + token.actor.items.size);
+            addLine('Invalid Items: ' + token.actor.items.invalidDocumentIds.size);
+            let total = 0;
+            token.actor.items.forEach(i => {
+                total += i.effects.invalidDocumentIds.size;
+            });
+            addLine('Items With Invalid Effects: ' + total);
+            addLine('Effects: ' + token.actor.effects.size);
+            addLine('Invalid Effects: ' + token.actor.effects.invalidDocumentIds.size);
+            addLine('Uuid: ' + token.actor.uuid);
+        }
     }
     if (game.modules.get('plutonium') || game.modules.get('plutonium-addon-automation')) {
         addLine('');

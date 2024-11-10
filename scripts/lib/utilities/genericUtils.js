@@ -1,5 +1,6 @@
 import {socket, sockets} from '../sockets.js';
 import {socketUtils} from '../../utils.js';
+let cachedSettings = {};
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -45,10 +46,19 @@ function decimalToFraction(decimal) {
     return '1/' + 1 / Number(decimal);
 }
 function getCPRSetting(key) {
-    return game.settings.get('chris-premades', key);
+    let setting = getProperty(cachedSettings, key);
+    if (setting) return setting;
+    setting = game.settings.get('chris-premades', key);
+    setProperty(cachedSettings, key, setting);
+    return setting;
 }
 async function setCPRSetting(key, value) {
     return game.settings.set('chris-premades', key, value);
+}
+async function createUpdateSetting({key, value}) {
+    if (key?.split('.')[0] !== 'chris-premades') return;
+    key = key.split('.').slice(1).join('.');
+    setProperty(cachedSettings, key, value);
 }
 function isNewerVersion(v1, v0) {
     return foundry.utils.isNewerVersion(v1, v0);
@@ -138,6 +148,7 @@ function getIdentifier(entity) {
     return entity.flags['chris-premades']?.info?.identifier;
 }
 function checkPlayerOwnership(entity) {
+    if (!entity) return false;
     return Object.entries(entity.ownership).some(([userId, permission]) => {
         if (game.users.get(userId)?.isGM) return false;
         else if (permission === 3) return true;
@@ -162,6 +173,7 @@ export let genericUtils = {
     checkMedkitPermission,
     notify,
     setCPRSetting,
+    createUpdateSetting,
     createEmbeddedDocuments,
     getProperty,
     updateTargets,
