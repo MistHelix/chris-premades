@@ -10,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "reactionmanual",
+      "type": "reaction",
       "cost": 1,
       "condition": ""
     },
@@ -21,10 +21,10 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "creature",
       "prompt": true
     },
     "range": {
@@ -40,9 +40,9 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.chris-premades.CPRClassFeatures.Item.7rzbfDAYjJGCPfWn",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
@@ -88,7 +88,7 @@
       "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "reactionCondition": "",
+      "reactionCondition": "false",
       "effectCondition": ""
     },
     "core": {
@@ -118,7 +118,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Brace",
-        "version": "0.12.43",
+        "version": "1.0.7",
         "identifier": "maneuversBrace",
         "source": "chris-premades"
       },

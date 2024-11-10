@@ -1,8 +1,8 @@
-import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
+import {custom} from '../../events/custom.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -55,7 +55,7 @@ function getConfig(item, key) {
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
-    let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
+    let value = custom.getMacro(identifier)?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {
@@ -68,26 +68,43 @@ function getAllItemsByIdentifier(actor, identifier) {
     return actor.items.filter(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getVersion(item) {
-    return item.flags['chris-premades']?.info?.version;
+    return item.flags['chris-premades']?.info?.version ?? item._stats?.modifiedTime;
 }
 function getSource(item) {
     return item.flags['chris-premades']?.info?.source;
 }
-function isUpToDate(item) {
+async function isUpToDate(item) {
     let version = getVersion(item);
     let source = getSource(item);
     if (!version || !source) return (item.flags['chris-premades']?.config?.generic ? 2 : -1);
     let sourceVersion;
+    let type = item.actor?.type ?? 'character';
+    if (type != 'character' && type != 'npc') return;
+    let monster;
+    if (type === 'npc') monster = item.actor.prototypeToken.name;
     switch (source) {
         case 'gambits-premades':
-            sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+            if (type === 'character') {
+                sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+            } else {
+                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+            }
             break;
         case 'midi-item-showcase-community':
-            sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+            if (type === 'character') {
+                sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+            } else {
+                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+            }
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
-            sourceVersion = macros[identifier]?.version;
+            sourceVersion = custom.getMacro(identifier)?.version;
+            break;
+        }
+        default: {
+            let sourceObj = await compendiumUtils.getItemFromCompendium(source, item.name, {ignoreNotFound: true, object: true});
+            sourceVersion = sourceObj?._stats.modifiedTime;
             break;
         }
     }

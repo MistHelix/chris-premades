@@ -25,7 +25,27 @@
             "Maimed": "Mutilado",
             "OffBalance": "Desequilibrado",
             "WeakGrip": "Aperto Fraco",
-            "WeaponAction": "Ação com Arma"
+            "WeaponAction": "Ação com Arma",
+            "Backbreaker": "Quebra-Costas",
+            "BraceMelee": "Brace (Corpo a Corpo)",
+            "Cleave": "Rachar",
+            "ConcussiveSmash": "Esmagamento Concussivo",
+            "MaimingStrike": "Golpe Mutilante",
+            "DisarmingStrike": "Golpe Desarmante",
+            "Flourish": "Florescer",
+            "Heartstopper": "Destruidor de Corações",
+            "Lacerate": "Dilacerar",
+            "PiercingStrike": "Golpe Perfurante",
+            "PommelStrike": "Golpe com Punho",
+            "Prepare": "Preparar",
+            "Rush": "Correr",
+            "Tenacity": "Tenacidade",
+            "Topple": "Derrubar",
+            "WeakeningStrike": "Golpe Enfraquecedor",
+            "BraceRanged": "Brace (À Distância)",
+            "HamstringShot": "Tiro no Tendão",
+            "MobileShot": "Tiro Móvel",
+            "PiercingShot": "Tiro Perfurante"
         },
         "Backup": {
             "Daily": "Diário",
@@ -212,16 +232,36 @@
             "UpdateItem": "Atualizar Item"
         },
         "Firearm": {
+            "Ammunition": "Bala de Arma de Fogo",
             "Broken": "Quebrado",
             "Damaged": "Danificado",
+            "Explosive": "Explosivo:",
             "Firearm": "Arma de Fogo",
+            "Grit": "Grit",
+            "GritRegain": "Grit recuperado! ({regained})",
             "HasMisfired": "falhou!",
             "IsBroken": "Esta arma de fogo está quebrada e deve ser consertada!",
             "IsDamaged": "Esta arma de fogo está danificada e deve ser reparada!",
             "Misfire": "Falha",
+            "MisfireScore": "Misfire Score:",
+            "NoAmmo": "Você não tem munição!",
+            "NoGrit": "Nenhum Grit restante!",
+            "NoGuns": "Você não tem armas de fogo para usar!",
+            "NoReloads": "Você não tem armas de fogo que precisam ser recarregadas!",
+            "NoRepairs": "Você não tem armas de fogo para consertar!",
+            "NoTinkers": "Você não tem Ferramentas de Funileiro para fazer o reparo!",
             "Other": "Outro",
+            "OutOfAmmo": "Não há tiros/munições restantes, é necessário recarregar!",
+            "RepairFailure": "{weaponName} está quebrada!",
+            "RepairSuccess": "{weaponName} foi reparada com sucesso!",
+            "SelectAmmo": "Qual munição usar?",
+            "SelectReload": "Qual arma de fogo recarregar?",
+            "SelectRepair": "Qual arma de fogo consertar?",
+            "SelectUse": "Qual arma de fogo usar?",
+            "SelectViolent": "Quanto grit gastar?",
             "Status": "Estado:",
             "TrickShot": "Trick Shot",
+            "TrickShotSelect": "Fazer um Trick Shot?",
             "Undamaged": "Não-Danificado"
         },
         "Generic": {
@@ -1906,6 +1946,10 @@
                 "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
                 "Name": "Configuração Ações de Armas Baldur's Gate 3"
             },
+            "bg3WeaponActionUses": {
+                "Hint": "Máximo de usos por descanso curto que a ação de arma pode ser usada.",
+                "Name": "Usos Ação de Arma Baldur's Gate 3"
+            },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
@@ -1935,6 +1979,20 @@
             "conditionResistanceAndVulnerability": {
                 "Hint": "Habilita automação de resistência e vulnerabilidde de condição.",
                 "Name": "Resistência e Vulnerabilidade de Condição"
+            },
+            "criticalCompendium": {
+                "Hint": "Selecione seu Compêndio Crítico.",
+                "Name": "Compêndio Crítico"
+            },
+            "criticalFumbleMode": {
+                "1": "Aleatório",
+                "2": "Selecionado",
+                "3": "Aleatório - Apenas Crítico",
+                "4": "Selecionado - Apenas Crítico",
+                "5": "Aleatório - Apenas Falha Crítica",
+                "6": "Selecionado - Apenas Falha Crítica",
+                "Hint": "Quando ativado, jogadas de ataque crítica ou falha crítica também rolarão um item dos compêndios selecionados.",
+                "Name": "Modo Crítico e Falha Crítica"
             },
             "devTools": {
                 "Hint": "Habilitar para exibir ferramentas de desenvolvimento.",
@@ -1979,6 +2037,10 @@
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
+            },
+            "fumbleCompendium": {
+                "Hint": "Selecione seu Compêndio de Falha Crítica.",
+                "Name": "Compêndio de Falha Crítica"
             },
             "gambitPremades": {
                 "1": "Sem Homebrew ou Terceiros",

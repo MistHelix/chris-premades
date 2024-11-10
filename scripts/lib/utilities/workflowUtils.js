@@ -1,8 +1,8 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.actor.getRollData());
-    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
+    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.item.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
     } else {
@@ -12,13 +12,13 @@ async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={
     await workflow.setDamageRolls(workflow.damageRolls);
 }
 async function bonusAttack(workflow, formula) {
-    let roll = await rollUtils.addToRoll(workflow.attackRoll, formula, {rollData: workflow.actor.getRollData()});
+    let roll = await rollUtils.addToRoll(workflow.attackRoll, formula, {rollData: workflow.item.getRollData()});
     await workflow.setAttackRoll(roll);
 }
 async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.actor.getRollData());
-    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.item.getRollData());
+    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.item.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
     } else {
@@ -30,23 +30,28 @@ async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
 async function completeItemUse(item, config={}, options={}) {
+    let oldTargets = Array.from(game.user.targets); //Temp Fix
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
         options.checkGMStatus = true;
     }
-    return await MidiQOL.completeItemUse(item, config, options);
+    let workflow = await MidiQOL.completeItemUse(item, config, options);
+    genericUtils.updateTargets(oldTargets); //Temp Fix
+    return workflow;
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {
     let defaultConfig = {
         consumeUsage: false,
         consumeSpellSlot: false
     };
+    let autoRollDamage = game.settings.get('midi-qol', 'ConfigSettings').autoRollDamage;
+    if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';
     let defaultOptions = {
         targetUuids: targets.map(i => i.document.uuid),
         configureDialog: false,
         ignoreUserTargets: true,
         workflowOptions: {
-            autoRollDamage: 'always',
+            autoRollDamage,
             autoFastDamage: true,
             autoRollAttack: true
         }
@@ -87,8 +92,16 @@ function setDamageItemDamage(ditem, damageAmount, adjustRaw = true) {
         ditem.rawDamageDetail[0].value = damageAmount;
     }
 }
-function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {
-    return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId});
+function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new', sourceItem}={}) {
+    let itemData = {};
+    if (sourceItem) {
+        itemData = {
+            name: sourceItem.name,
+            img: sourceItem.img,
+            type: sourceItem.type
+        };
+    }
+    return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId, itemData});
 }
 function getDamageTypes(damageRolls) {
     return new Set(damageRolls.map(i => i.options.type));

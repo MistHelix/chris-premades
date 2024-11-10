@@ -7,6 +7,7 @@ import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '.
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
 import {cleave} from '../macros/mechanics/cleave.js';
+import {critFumble} from '../macros/homebrew/critFumble.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -29,7 +30,7 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
     let triggers = [];
     if (item) {
         let macroList = collectItemMacros(item, pass);
-        macroList.forEach(i => {
+        if (macroList.length) {
             triggers.push({
                 entity: item,
                 castData: {
@@ -37,9 +38,45 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
                     baseLevel: item.system.level ?? -1,
                     saveDC: itemUtils.getSaveDC(item) ?? -1
                 },
-                macro: i.macro,
-                name: item.name,
-                priority: i.priority,
+                macros: macroList,
+                name: item.name.slugify(),
+                token: token,
+                sourceToken: sourceToken,
+                targetToken: targetToken
+            });
+        }
+    }
+    if (actor) {
+        actor.items.forEach(i => {
+            let macroList = collectActorMacros(i, pass);
+            if (!macroList.length) return;
+            triggers.push({
+                entity: i,
+                castData: {
+                    castLevel: i.system.level ?? -1,
+                    baseLevel: i.system.level ?? -1,
+                    saveDC: itemUtils.getSaveDC(i) ?? -1
+                },
+                macros: macroList,
+                name: i.name.slugify(),
+                token: token,
+                sourceToken: sourceToken,
+                custom: i.custom,
+                targetToken: targetToken
+            });
+        });
+        actorUtils.getEffects(actor).forEach(i => {
+            let macroList = collectActorMacros(i, pass);
+            if (!macroList.length) return;
+            triggers.push({
+                entity: i,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(i) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(i) ?? -1,
+                    saveDC: effectUtils.getSaveDC(i) ?? -1
+                },
+                macros: macroList,
+                name: i.name.slugify(),
                 token: token,
                 sourceToken: sourceToken,
                 custom: i.custom,
@@ -47,68 +84,24 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
             });
         });
     }
-    if (actor) {
-        actor.items.forEach(i => {
-            let macroList = collectActorMacros(i, pass);
-            macroList.forEach(j => {
-                triggers.push({
-                    entity: i,
-                    castData: {
-                        castLevel: i.system.level ?? -1,
-                        baseLevel: i.system.level ?? -1,
-                        saveDC: itemUtils.getSaveDC(i) ?? -1
-                    },
-                    macro: j.macro,
-                    name: i.name,
-                    priority: j.priority,
-                    token: token,
-                    sourceToken: sourceToken,
-                    custom: i.custom,
-                    targetToken: targetToken
-                });
-            });
-        });
-        actorUtils.getEffects(actor).forEach(i => {
-            let macroList = collectActorMacros(i, pass);
-            macroList.forEach(j => {
-                triggers.push({
-                    entity: i,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(i) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(i) ?? -1,
-                        saveDC: effectUtils.getSaveDC(i) ?? -1
-                    },
-                    macro: j.macro,
-                    name: i.name,
-                    priority: j.priority,
-                    token: token,
-                    sourceToken: sourceToken,
-                    custom: i.custom,
-                    targetToken: targetToken
-                });
-            });
-        });
-    }
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
         templates.forEach(i => {
             let macroList = collectActorMacros(i, pass);
-            macroList.forEach(j => {
-                triggers.push({
-                    entity: i,
-                    castData: {
-                        castLevel: templateUtils.getCastLevel(i) ?? -1,
-                        baseLevel: templateUtils.getBaseLevel(i) ?? -1,
-                        saveDC: templateUtils.getSaveDC(i) ?? -1
-                    },
-                    macro: j.macro,
-                    name: templateUtils.getName(i),
-                    priority: j.priority,
-                    token: token,
-                    sourceToken: sourceToken,
-                    custom: i.custom,
-                    targetToken: targetToken
-                });
+            if (!macroList.length) return;
+            triggers.push({
+                entity: i,
+                castData: {
+                    castLevel: templateUtils.getCastLevel(i) ?? -1,
+                    baseLevel: templateUtils.getBaseLevel(i) ?? -1,
+                    saveDC: templateUtils.getSaveDC(i) ?? -1
+                },
+                macros: macroList,
+                name: templateUtils.getName(i).slugify(),
+                token: token,
+                sourceToken: sourceToken,
+                custom: i.custom,
+                targetToken: targetToken
             });
         });
     }
@@ -140,7 +133,22 @@ function getSortedTriggers({item, token, actor, sourceToken, targetToken}, pass)
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                castData: trigger.castData,
+                entity: trigger.entity,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name,
+                sourceToken: trigger.sourceToken,
+                targetToken: trigger.targetToken,
+                token: trigger.token
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, workflow, ditem) {
     genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
@@ -225,6 +233,7 @@ async function attackRollComplete(workflow) {
         if (workflow.aborted) break;
     }
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
+    if (genericUtils.getCPRSetting('criticalFumbleMode')) await critFumble.attack(workflow);
 }
 async function savesComplete(workflow) {
     await executeMacroPass(workflow, 'savesComplete');
