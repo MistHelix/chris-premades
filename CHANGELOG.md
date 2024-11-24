@@ -1,3 +1,38 @@
+# 1.0.46 Release:
+## Bug Fixes:
+- Master's Amulet
+
+# 1.0.45 Release:
+## New Generic Monster Features:
+- Auto Push
+
+# 1.0.44 Release:
+## New Generic Monster Features:
+- Effect Immunity (Frightful Presence)
+## Bug Fixes:
+- Hunter's Mark
+- Grapple
+
+# 1.0.43 Release:
+## Bug Fixes:
+- Effect Medkit
+- Condition Resistance and Condition Vulnerability
+## Update Notes:
+- Updated the overtime creator to no longer use deprecated label and added action save types.
+- Generic Actions will now pull descriptions from the description journal when automatically added.
+
+# 1.0.42 Release:
+## Bug Fixes:
+- Spiritual Weapon
+- Cloud Rune
+- Stormgirdle
+- Remarkable Recovery
+
+# 1.0.41 Release:
+## Bug Fixes:
+- Condition Resistance and Condition Vulnerability
+- Item Medkit
+
 # 1.0.40 Release:
 ## API Bug Fixes:
 - Ability Check and Saving Throw Events

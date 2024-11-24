@@ -444,6 +444,8 @@ export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuar
 export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/monsterFeatures/construct/shieldGuardian/shield.js';
 export {shieldGuardianSpellStoring} from './macros/monsterFeatures/construct/shieldGuardian/spellStoring.js';
 export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin/leadership.js';
+//export {adultWindDragonFrightfulPresence, ancientWindDragonFrightfulPresence} from './macros/monsterFeatures/dragon/windDragon/frightfulPresence.js';
+//export {adultWindDragonTempestBreath, ancientWindDragonTempestBreath, wyrmlingWindDragonTempestBreath, youngWindDragonTempestBreath} from './macros/monsterFeatures/dragon/windDragon/tempestBreath.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
@@ -469,6 +471,8 @@ export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.
 export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
 export {parry} from './macros/monsterFeatures/generic/parry.js';
 export {lifesteal} from './macros/monsterFeatures/generic/lifesteal.js';
+export {effectImmunity, effectImmunityRemove} from './macros/monsterFeatures/generic/effectImmunity.js';
+export {autoPush} from './macros/monsterFeatures/generic/autoPush.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';

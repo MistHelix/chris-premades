@@ -155,7 +155,9 @@
             "DarknessAnimation": "Darkness Animation:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
+            "DurationSeconds": "Duration (Seconds):",
             "Expire": "Expiration:",
+            "FailedSave": "Failed Save:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
@@ -445,6 +447,9 @@
                 "Disadvantage": "Grant disadvantage on escape check:",
                 "Name": "Auto Grapple"
             },
+            "AutoPush": {
+                "Name": "Auto Push"
+            },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"
             },
@@ -718,6 +723,10 @@
             },
             "DreadfulAspect": {
                 "Turn": "Dreadful Aspect: End of Turn"
+            },
+            "EffectImmunity": {
+                "Immune": "Immune",
+                "Name": "Effect Immunity"
             },
             "EldritchBlast": {
                 "Beam": "Eldritch Blast: Beam",
@@ -1786,6 +1795,9 @@
                     "Labels": {
                         "Ability": "Ability Based DC",
                         "ActionSave": "Saving Throw is an Action:",
+                        "ActionSaveDialog": "Dialog",
+                        "ActionSaveDisabled": "Disabled",
+                        "ActionSaveRoll": "Chat Button",
                         "AllowIncapacitated": "Allow Incapacitated Targets:",
                         "ApplyCondition": "Apply Condition Evaluation Expression:",
                         "BlindRoll": "Blind Roll",
