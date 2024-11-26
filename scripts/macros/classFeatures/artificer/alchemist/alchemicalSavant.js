@@ -1,12 +1,14 @@
 import {dialogUtils, genericUtils, workflowUtils} from '../../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
+    console.log("Savant");
+    console.log(workflow);
     if (workflow.item.type !== 'spell') return;
-    if (!workflow.item.system.properties.has('material')) return;
     let matchingTypes = Array.from(workflowUtils.getDamageTypes(workflow.damageRolls).intersection(new Set(['acid', 'fire', 'necrotic', 'poison', 'healing'])));
+    console.log(matchingTypes);
     if (!matchingTypes.lenth) return;
     let damageType;
-    if (matchingTypes.length > 1) {
+    if (matchingTypes.length >= 1) {
         damageType = await dialogUtils.buttonDialog(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), [
             matchingTypes.map(i => [CONFIG.DND5E.damageTypes[i].label, i])
         ]);
