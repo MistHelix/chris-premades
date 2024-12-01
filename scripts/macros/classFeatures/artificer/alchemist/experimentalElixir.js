@@ -19,6 +19,15 @@ async function use({workflow}) {
             speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
             flavor: genericUtils.translate('CHRISPREMADES.Macros.ExperimentalElixir.' + elixirType)
         });
+        let alchemist = await new Roll('1d100').evaluate();
+        alchemist.toMessage({
+            rollMode: 'roll',
+            speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
+            flavor: "Potion Master"
+        });
+        if (alchemist <= workflow.actor.system.details.level){
+            await elixirHelper(elixirType, workflow.actor);
+        }
         await elixirHelper(elixirType, workflow.actor);
     }
     let minSpellSlot = Object.entries(workflow.actor.system.spells).map(i => ({...i[1], type: i[0]})).filter(i => i.value > 0).reduce((lowest, curr) => curr.level < lowest.level ? curr : lowest, {level: 99});
@@ -34,6 +43,15 @@ async function use({workflow}) {
         } 
         let elixirType = await dialogUtils.buttonDialog(workflow.item.name, dialogContent, buttons);
         if (!elixirType?.length || elixirType === 'no') return;
+        let alchemist = await new Roll('1d100').evaluate();
+        alchemist.toMessage({
+            rollMode: 'roll',
+            speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
+            flavor: "Potion Master"
+        });
+        if (alchemist <= workflow.actor.system.details.level){
+            await elixirHelper(elixirType, workflow.actor);
+        }
         await elixirHelper(elixirType, workflow.actor);
         await genericUtils.update(workflow.actor, {['system.spells.' + slotType + '.value']: slotValue - 1});
         minSpellSlot = Object.entries(workflow.actor.system.spells).map(i => ({...i[1], type: i[0]})).filter(i => i.value > 0).reduce((lowest, curr) => curr.level < lowest.level ? curr : lowest, {level: 99});
@@ -52,7 +70,7 @@ async function elixirHelper(elixirType, actor) {
         if (elixirType === 'Healing') {
             itemData.system.damage.parts = [
                 [
-                    '2d4[healing] + ' + actor.system.abilities.int.mod,
+                    '2@attributes.hd.largest + ' + actor.system.abilities.int.mod + ' + ' + actor.system.abilities.int.mod,
                     'healing'
                 ]
             ];
