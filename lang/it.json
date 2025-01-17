@@ -114,7 +114,8 @@
             "ApplyFilter": "Applica Filtro:",
             "AttackBonus": "Bonus Attacco:",
             "Character": "Personaggio",
-            "CheckSaves": "Tiro Salvezza:",
+            "CheckSave": "Tiro Salvezza:",
+            "CheckSaves": "Tiri Salvezza:",
             "ClassIdentifier": "Identificatore di Classe",
             "Color": "Colore:",
             "Colors": {
@@ -155,7 +156,9 @@
             "DarknessAnimation": "Animazione Oscurità:",
             "DisplayFormulaRoll": "Mostra il Tiro della Formula:",
             "Distance": "Distanza:",
+            "DurationSeconds": "Durata (Secondi):",
             "Expire": "Scadenza:",
+            "FailedSave": "Tiro Salvezza Fallito:",
             "Formula": "Formula:",
             "HideToken": "Nascondi Token:",
             "IgnoredCreatureTypes": "Tipi di creature ignorate:",
@@ -173,6 +176,8 @@
             "ShowRoll": "Mostra Tiro:",
             "Sound": "Suono:",
             "SpecificAnimation": "Animazione {option}:",
+            "Trigger": "Attivazione:",
+            "TurnTrigger": "Attivare l'interruttore:",
             "UseFormula": "Utilizzare la formula:"
         },
         "Cover": {
@@ -320,6 +325,8 @@
             "Success": "Successo",
             "Summon": "Evoca",
             "Total": "Totale",
+            "TurnEnd": "Fine Turno",
+            "TurnStart": "Inizio Turno",
             "Uncontested": "Non Contrastato",
             "Update": "Aggiorna",
             "Yes": "Sì",
@@ -444,6 +451,9 @@
                 "DC": "CD fissa per sfuggire all'afferramento (contrastata se 0):",
                 "Disadvantage": "Concedi svantaggio sulla prova di fuga:",
                 "Name": "Afferrare Automatico"
+            },
+            "AutoPush": {
+                "Name": "Spingere Automatico"
             },
             "AwakenedSpellbook": {
                 "Select": "Modificare il tipo di danno?"
@@ -719,8 +729,12 @@
             "DreadfulAspect": {
                 "Turn": "Aspetto Terribile: Fine del Turno"
             },
+            "EffectImmunity": {
+                "Immune": "Immune",
+                "Name": "Immunità all'Effetto"
+            },
             "EldritchBlast": {
-                "Beam": "Raggio Eldritch: Raggio",
+                "Beam": "Deflagrazione Occulta: Raggio",
                 "Target": "Quali bersagli?"
             },
             "EldritchCannon": {
@@ -816,6 +830,7 @@
                 "NoTargets": "Nessun bersaglio valido a portata!"
             },
             "FarStep": {
+                "Name": "Passo Lontano",
                 "Teleport": "Passo Lontano: Teletrasporto"
             },
             "FeyStep": {
@@ -830,15 +845,15 @@
                 "Winter": "Passo Fey (Inverno)"
             },
             "FindFamiliar": {
-                "Choose": "Scegli Familiare",
-                "Command": "Trova Familiare: Comando",
-                "Error": "Nessun token o dato familiare trovato!",
+                "Choose": "Scegli Famiglio",
+                "Command": "Trova Famiglio: Comando",
+                "Error": "Nessun token o dato famiglio trovato!",
                 "InvalidSpell": "Tipo di Incantesimo Non Valido!",
                 "Movement": "Quale Tipo di Movimento?",
-                "PocketDimension": "Trova Familiare: Dimensione Tascabile",
-                "ReactionUsed": "Il familiare ha già usato la sua reazione!",
-                "TooFar": "Familiare Troppo Lontano!",
-                "Touch": "Trova Familiare: Toccare"
+                "PocketDimension": "Trova Famiglio: Dimensione Tascabile",
+                "ReactionUsed": "Il famiglio ha già usato la sua reazione!",
+                "TooFar": "Famiglio Troppo Lontano!",
+                "Touch": "Trova Famiglio: Toccare"
             },
             "FindSteed": {
                 "Choose": "Scegli Destriero",
@@ -871,10 +886,10 @@
                 "RamItem": "Sfera Fiammeggiante: Colpire"
             },
             "FlockOfFamiliars": {
-                "Command": "Sciame di Familiari: Comando",
-                "ReactionUsed": "I familiari sono troppo lontani o hanno già usato la loro reazione!",
-                "TooFar": "I familiari sono troppo lontani!",
-                "Touch": "Sciame di Familiari: Toccare"
+                "Command": "Sciame di Famigli: Comando",
+                "ReactionUsed": "I famigli sono troppo lontani o hanno già usato la loro reazione!",
+                "TooFar": "I famigli sono troppo lontani!",
+                "Touch": "Sciame di Famigli: Toccare"
             },
             "FocusedAim": {
                 "Bonus": "Sì ({kiCost} Ki / +{bonus} per colpire)"
@@ -889,6 +904,9 @@
                 "AvertEffect": "Sguardo Distolto",
                 "AvertSelect": "Distogliere lo sguardo da {tokenName}?",
                 "Name": "Sguardo"
+            },
+            "GenericTeleport": {
+                "Name": "Teletrasporto"
             },
             "Grapple": {
                 "ChooseSkill": "Come vuoi contrastare l'afferramento?",
@@ -970,6 +988,9 @@
             "HexbladesCurse": {
                 "Healing": "Maledizione della Lama Nera: Cura",
                 "Transfer": "Maestro delle Maledizioni: Trasferire Maledizione?"
+            },
+            "HiddenPaths": {
+                "Name": "Sentieri Nascosti"
             },
             "HoldPerson": {
                 "Overtime": "Blocca Persona (Fine del Turno)"
@@ -1073,7 +1094,7 @@
             },
             "InvestmentOfTheChainMaster": {
                 "Command": "Investitura del Padrone della Catena: Comando",
-                "Resistance": "Investitura del Padrone della Catena: Resistenza Familiare"
+                "Resistance": "Investitura del Padrone della Catena: Resistenza Famiglio"
             },
             "JavelinOfLightning": {
                 "Bolt": "Giavellotto del Fulmine: Dardo"
@@ -1189,6 +1210,9 @@
                 "Hit": "L'attacco ha colpito un duplicato e l'ha distrutto.",
                 "Miss": "L'attacco ha mirato a un duplicato e ha mancato."
             },
+            "MistyStep": {
+                "Name": "Passo Velato"
+            },
             "Moonbeam": {
                 "Damage": "Raggio di Luna: Danno",
                 "Move": "Raggio di Luna: Sposta"
@@ -1279,7 +1303,7 @@
             },
             "ReduceMaxHP": {
                 "DamageTypeFilter": "Applica solo determinati tipi di danno alla riduzione del massimo HP:",
-                "Half": "Ridurre a metà il danno/tira:",
+                "Half": "Ridurre a metà il danno / tira:",
                 "Long": "Scade al Riposo Lungo:",
                 "Name": "Ridurre HP Massimi",
                 "ReduceByRoll": "Ridurre dal tiro, non dal danno:",
@@ -1341,6 +1365,9 @@
             "ShadowOfMoil": {
                 "Damage": "Ombra di Moil: Danno"
             },
+            "ShadowStep": {
+                "Name": "Passo dell'Ombra"
+            },
             "ShieldGuardianShield": {
                 "Use": "Scudo {name}? Tiro di Attacco: {attack}"
             },
@@ -1390,6 +1417,12 @@
                 "Ring": "Anello",
                 "Spirits": "Spiriti",
                 "Variation": "Variante:"
+            },
+            "SpiritOfDeath": {
+                "HauntCreature": "Creatura Infestante (Spirito Mietitore)",
+                "HauntCreatureHaunt": "Creatura Infestante: Infestazione",
+                "Haunted": "Spirito Mietitore: Infestato",
+                "ReapingScythe": "Falce Mietitrice (Spirito Mietitore)"
             },
             "SpiritShroud": {
                 "Hit": "Mantello Spirituale: Colpo",
@@ -1622,6 +1655,7 @@
                 "Pull": "Quanto distante tiri il bersaglio?"
             },
             "ThunderStep": {
+                "Name": "Passo del Tuono",
                 "Select": "Teletrasportare una Creatura?"
             },
             "ThunderboltStrike": {
@@ -1665,6 +1699,9 @@
                 "Attack": "Tocco Vampirico: Attacco",
                 "HealingModifier": "0.5"
             },
+            "VortexWarp": {
+                "Name": "Vortex Warp"
+            },
             "WallOfFire": {
                 "CircleFacing": "Quale lato è il fuoco?",
                 "Diameter": "Quale diametro?",
@@ -1683,8 +1720,8 @@
                 "MaxDistance": "Distanza Massima:"
             },
             "WildShape": {
-                "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
                 "AllowElementals": "Permettere sempre gli elementali:",
+                "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
                 "Equipment": "Cosa succede al tuo equipaggiamento?",
                 "Ignore": "Ignora CR, Tipo e Restrizioni di Movimento:",
                 "KeepSpells": "Permetti incantesimi durante la trasformazione:",
@@ -2408,7 +2445,7 @@
                 "ElementalSpiritEarth": "Spirito Elementale (Terra)",
                 "ElementalSpiritFire": "Spirito Elementale (Fuoco)",
                 "ElementalSpiritWater": "Spirito Elementale (Acqua)",
-                "Familiar": "Familiare",
+                "Familiar": "Famiglio",
                 "FeySpirit": "Spirito Fatato",
                 "FeySpiritFuming": "Spirito Fatato (Iroso)",
                 "FeySpiritMirthful": "Spirito Fatato (Gioioso)",
@@ -2427,6 +2464,7 @@
                 "HybridTransformation": "Trasformazione Ibrida",
                 "ManifestMind": "Mente Manifestata",
                 "Pixie": "Folletto",
+                "ReaperSpirit": "Spirito Mietitore",
                 "ShadowSpirit": "Spirito Ombra",
                 "ShadowSpiritDespair": "Spirito Ombra (Disperazione)",
                 "ShadowSpiritFear": "Spirito Ombra (Paura)",
@@ -2434,7 +2472,7 @@
                 "Shifter": "Mutante",
                 "Skeleton": "Scheletro",
                 "SpiritualWeapon": "Arma Spirituale",
-                "Steed": "Cavallo",
+                "Steed": "Destriero",
                 "SteelDefender": "Difensore d'Acciaio",
                 "TentacleOfTheDeeps": "Tentacolo degli Abissi",
                 "UndeadSpirit": "Spirito Non Morto",
@@ -2450,7 +2488,7 @@
             "CustomToken": "Token Personalizzato {option}",
             "DismissHP": "L'evocazione ha raggiunto 0 punti ferita! Dovrebbe essere dissolta?",
             "DismissSummon": "Dissolvi Evocazione",
-            "FamiliarDefault": "Familiare {option}",
+            "FamiliarDefault": "Famiglio {option}",
             "Folder": "Nome della Cartella",
             "HowMany": "Quanti?",
             "NoMatching": "Nessun attore corrispondente trovato nel compendio specificato!",

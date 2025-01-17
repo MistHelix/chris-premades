@@ -1,3 +1,73 @@
+# 1.0.57 Release
+## Bug Fixes:
+- Flaming Sphere
+- Hunter's Mark
+- Maneuvers: Bait and Switch
+- Hex
+
+# 1.0.56 Release
+## Bug Fixes:
+- Missed localization
+- Generic Enlarge
+- Generic Reduce
+- Item Medkit
+
+# 1.0.55 Release
+## Bug Fixes:
+- Midi-Qol Condition Effects
+
+# 1.0.54 Release:
+## Bug Fixes:
+- Movement Event
+
+# 1.0.53 Release:
+## Bug Fixes:
+- Movement Event
+
+# 1.0.52 Release:
+## Bug Fixes:
+- Dreadful Aspect
+- Strength of the Grave
+- Potion of Poison
+- Undead Fortitude
+- Compelled Duel
+- Gust of Wind
+- Sickening Radiance
+- Zone of Truth
+- Maybe others...
+
+# 1.0.51 Release:
+## New Content:
+- Generic Monster Feature: Teleport
+## Bug Fixes:
+- Crosshair Utils range fix
+- Shield Guardian
+- Hexblade's Curse
+
+# 1.0.50 Release:
+## New Content:
+- Spirit of Death (Thanks SagaTympana)
+## Bug Fixes:
+- Dawn
+- Push Generic Monster Feature (Thanks aljames-arctic)
+
+# 1.0.49 Release:
+## Bug Fixes:
+- Medkit Title Bar Icon
+- DMG Cleave
+- Lifesteal
+## Update Notes:
+- Added a check saves option to the Ability Drain generic monster feature (on by default).
+
+# 1.0.48 Release:
+## Bug Fixes:
+- Auto Push Generic Monster Feature
+- Slasher
+
+# 1.0.47 Release:
+## Bug Fixes:
+- Alchemical Savant (Thanks MistHelix)
+
 # 1.0.46 Release:
 ## Bug Fixes:
 - Master's Amulet

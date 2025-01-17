@@ -4,8 +4,13 @@ async function use({trigger, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'autoPush');
     if (isNaN(Number(config.distance))) return;
     workflow.targets.forEach(token => {
-        if (config.fail && !workflow.failedSaves.has(token)) return;
-        tokenUtils.pushToken(workflow.token, token, Number(config.distance));
+        if (config.failed && !workflow.failedSaves.has(token)) return;
+        let distance = Number(config.distance);
+        if (distance < 0) {
+            let distanceBetween = tokenUtils.getDistance(workflow.token, token);
+            distance = Math.max(distance, -distanceBetween);
+        }
+        tokenUtils.pushToken(workflow.token, token, distance);
     });
 }
 export let autoPush = {

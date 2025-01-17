@@ -114,6 +114,7 @@
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
             "Character": "Character",
+            "CheckSave": "Check Save:",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
@@ -175,6 +176,8 @@
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:",
+            "Trigger": "Trigger:",
+            "TurnTrigger": "Turn Trigger:",
             "UseFormula": "Use Formula:"
         },
         "Cover": {
@@ -322,6 +325,8 @@
             "Success": "Success",
             "Summon": "Summon",
             "Total": "Total",
+            "TurnEnd": "Turn End",
+            "TurnStart": "Turn Start",
             "Uncontested": "Uncontested",
             "Update": "Update",
             "Yes": "Yes",
@@ -434,7 +439,7 @@
                 "Which": "Select proficiencies:"
             },
             "AuraDamage": {
-                "Name": "Aura Damage: End of Turn"
+                "Name": "Damaging Aura"
             },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
@@ -825,6 +830,7 @@
                 "NoTargets": "No valid targets within range!"
             },
             "FarStep": {
+                "Name": "Far Step",
                 "Teleport": "Far Step: Teleport"
             },
             "FeyStep": {
@@ -898,6 +904,9 @@
                 "AvertEffect": "Averted Eyes",
                 "AvertSelect": "Avert your eyes from the {tokenName}?",
                 "Name": "Gaze"
+            },
+            "GenericTeleport": {
+                "Name": "Teleport"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -979,6 +988,9 @@
             "HexbladesCurse": {
                 "Healing": "Hexblade's Curse: Healing",
                 "Transfer": "Master of Hexes: Transfer Curse?"
+            },
+            "HiddenPaths": {
+                "Name": "Hidden Paths"
             },
             "HoldPerson": {
                 "Overtime": "Hold Person (End of Turn)"
@@ -1198,6 +1210,9 @@
                 "Hit": "Attack hit a duplicate and destroyed it.",
                 "Miss": "Attack targeted a duplicate and missed."
             },
+            "MistyStep": {
+                "Name": "Misty Step"
+            },
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
@@ -1350,6 +1365,9 @@
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
             },
+            "ShadowStep": {
+                "Name": "Shadow Step"
+            },
             "ShieldGuardianShield": {
                 "Use": "Shield {name}? Attack Roll: {attack}"
             },
@@ -1399,6 +1417,12 @@
                 "Ring": "Ring",
                 "Spirits": "Spirits",
                 "Variation": "Variation:"
+            },
+            "SpiritOfDeath": {
+                "HauntCreature": "Haunt Creature (Reaper Spirit)",
+                "HauntCreatureHaunt": "Haunt Creature: Haunt",
+                "Haunted": "Reaper Spirit: Haunted",
+                "ReapingScythe": "Reaping Scythe (Reaper Spirit)"
             },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
@@ -1631,6 +1655,7 @@
                 "Pull": "How far do you pull the target?"
             },
             "ThunderStep": {
+                "Name": "Thunder Step",
                 "Select": "Teleport a Creature?"
             },
             "ThunderboltStrike": {
@@ -1673,6 +1698,9 @@
             "VampiricTouch": {
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
+            },
+            "VortexWarp": {
+                "Name": "Vortex Warp"
             },
             "WallOfFire": {
                 "CircleFacing": "Which way is the fire facing?",
@@ -2427,6 +2455,7 @@
                 "FiendishSpiritDevil": "Fiendish Spirit (Devil)",
                 "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
                 "FireElemental": "Fire Elemental",
+                "FlamingSphere": "Flaming Sphere",
                 "Flumph": "Flumph",
                 "ForceSculpture": "Force Sculpture",
                 "FormOfDread": "Form of Dread",
@@ -2436,6 +2465,7 @@
                 "HybridTransformation": "Hybrid Transformation",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
+                "ReaperSpirit": "Reaper Spirit",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",
                 "ShadowSpiritFear": "Shadow Spirit (Fear)",
