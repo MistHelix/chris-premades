@@ -138,15 +138,53 @@ async function use({workflow}) {
             }
         );
     }
-    if(workflow.actor.getFlag("chris-premades", "keyLevel") >= 2){
-        console.log("Level 2");
-        let damage_type = await dialogUtils.buttonDialog('Pulorus Cohortis Level 2','Damage type:',[['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
-            ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder']]);
-        console.log(damage_type);
-        if(damage_type){
+    if (workflow.actor.getFlag("chris-premades", "keyLevel") >= 2) {
+        let immunity = 1;
+        let maxAmount = workflow.actor.getFlag("chris-premades", "resistanceAmount");
+        let selectOptions = [];
+        let targetInputs = [];
+        let types = [['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
+                    ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder']];
+        for (let i of types){
+            targetInputs.push({
+                label: i[0],
+                name: i[1],
+                options: {isChecked: true, options: selectOptions, maxAmount: immunity}
+            })
+        }
+
+        let inputs = [['selectAmount']];
+        inputs[0].push(targetInputs);
+        inputs[0].push({displayAsRows: true, radioName: 'targets', totalMax: maxAmount});
+        let result;
+        let userId = game.user.id;
+        if (userId && userId != game.user.id) {
+            selection = await socket.executeAsUser(sockets.dialog.name, userId, "title", "content", inputs, 'okCancel', {width: 500});
+        } else selection = await DialogApp.dialog("Pulorus Cohortis", `Resistance/Immunities ${maxAmount}`, inputs, 'okCancel', {width: 500});
+        let damageTypes = [];
+        let immunities = [];
+        for (let [key, value] of Object.entries(selection)) {
+            if (key === 'buttons' || !value || value === '0') continue;
+            if (value >= 3){
+                immunities.push(key);
+            } else {
+                damageTypes.push(key);
+            }
+        }
+        for (let damage_type of damageTypes) {
             effectData.changes.push(
                 {
                     'key': 'system.traits.dr.value',
+                    'value': damage_type,
+                    'mode': 2,
+                    'priority': 20
+                }
+            );
+        }
+        for (let damage_type of immunities) {
+            effectData.changes.push(
+                {
+                    'key': 'system.traits.di.value',
                     'value': damage_type,
                     'mode': 2,
                     'priority': 20
