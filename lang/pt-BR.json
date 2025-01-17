@@ -114,6 +114,7 @@
             "ApplyFilter": "Aplicar Filtro:",
             "AttackBonus": "Bônus Ataque:",
             "Character": "Personagem",
+            "CheckSave": "Verificar Salvaguarda:",
             "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
@@ -155,7 +156,9 @@
             "DarknessAnimation": "Animação de Escuridão:",
             "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
             "Distance": "Distância:",
+            "DurationSeconds": "Duração (Segundos):",
             "Expire": "Expiração:",
+            "FailedSave": "Salvaguarda Falha:",
             "Formula": "Fórmula:",
             "HideToken": "Ocultar Token:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
@@ -173,6 +176,8 @@
             "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:",
+            "Trigger": "Gatilho:",
+            "TurnTrigger": "Gatilho do Turno:",
             "UseFormula": "Usar Fórmula:"
         },
         "Cover": {
@@ -320,6 +325,8 @@
             "Success": "Sucesso",
             "Summon": "Invocação",
             "Total": "Total",
+            "TurnEnd": "Fim do Turno",
+            "TurnStart": "Início do Turno",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
             "Yes": "Sim",
@@ -444,6 +451,9 @@
                 "DC": "CD fixo para escapar do agarrão (contestado se 0):",
                 "Disadvantage": "Dar desvantagem no teste de escape:",
                 "Name": "Auto-Agarrão"
+            },
+            "AutoPush": {
+                "Name": "Auto-Empurrão"
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
@@ -718,6 +728,10 @@
             },
             "DreadfulAspect": {
                 "Turn": "Aspecto Apavorante: Fim do Turno"
+            },
+            "EffectImmunity": {
+                "Immune": "Imune",
+                "Name": "Imunidade ao Efeito"
             },
             "EldritchBlast": {
                 "Beam": "Raio Místico: Raio",
@@ -1391,6 +1405,12 @@
                 "Spirits": "Espíritos",
                 "Variation": "Variações:"
             },
+            "SpiritOfDeath": {
+                "HauntCreature": "Criatura Assombrada (Espírito Ceifador)",
+                "HauntCreatureHaunt": "Criatura Assombrada: Assombrar",
+                "Haunted": "Espírito Ceifador: Assombrado",
+                "ReapingScythe": "Foice Ceifadora (Espírito Ceifador)"
+            },
             "SpiritShroud": {
                 "Hit": "Mortalha Espiritual: Acerto",
                 "Slow": "Mortalha Espiritual: Lentidão"
@@ -1801,7 +1821,7 @@
                         "GMRoll": "Rolagem pro MJ",
                         "HalfDamage": "Metade do Dano",
                         "Item": "CD do Item",
-                        "Label": "Mensagem do Cartão:",
+                        "Label": "Nome do Cartão de Chat:",
                         "Macro": "Macro para Chamar:",
                         "NoDamage": "Sem Dano",
                         "PublicRoll": "Rolagem Pública",
@@ -2427,6 +2447,7 @@
                 "HybridTransformation": "Transformação Híbrida",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
+                "ReaperSpirit": "Espírito Ceifador",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
                 "ShadowSpiritFear": "Espírito das Sombras (Medo)",
