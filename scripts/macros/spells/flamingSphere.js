@@ -6,6 +6,8 @@ async function use({trigger, workflow}) {
     let color = itemUtils.getConfig(workflow.item, 'color');
     let name = itemUtils.getConfig(workflow.item, 'name');
     let scale = Number(itemUtils.getConfig(workflow.item, 'scale'));
+    let damage_type = await workflow.actor.getFlag("midi-qol", "grandmaDamageType");
+    if (damage_type == null || damage_type =='default') damage_type = 'fire';
     if (isNaN(scale)) scale = 1;
     if (!name || name === '') name = workflow.item.name;
     if (!tokenImg || tokenImg === '') tokenImg = Sequencer.Database.getEntry('jb2a.flaming_sphere.400px.' + color + '.02').file;
@@ -18,12 +20,12 @@ async function use({trigger, workflow}) {
             }
         }
     };
-    let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]' + ' + ' + workflow.actor.system.abilities.int.mod, translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
+    let damageFeature = await Summons.getSummonItem('Flaming Sphere: End Turn', damageUpdates, workflow.item, {flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6['+damage_type+']' + ' + ' + workflow.actor.system.abilities.int.mod, translate: 'CHRISPREMADES.Macros.FlamingSphere.EndTurn'});
     if (!damageFeature) {
         errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: End Turn');
         return;
     }
-    let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6[fire]'  + ' + ' + workflow.actor.system.abilities.int.mod, translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
+    let ramFeature = await Summons.getSummonItem('Flaming Sphere: Ram', damageUpdates, workflow.item,{flatDC: itemUtils.getSaveDC(workflow.item), damageFlat: workflow.castData.castLevel + 'd6['+damage_type+']'  + ' + ' + workflow.actor.system.abilities.int.mod, translate: 'CHRISPREMADES.Macros.FlamingSphere.RamItem'});
     if (!ramFeature) {
         errors.missingPackItem(constants.packs.summonFeatures, 'Flaming Sphere: Ram');
         return;

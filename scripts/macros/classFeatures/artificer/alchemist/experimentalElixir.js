@@ -25,6 +25,7 @@ async function use({workflow}) {
             speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
             flavor: "Potion Master"
         });
+        console.log(alchemist);
         if (alchemist <= workflow.actor.system.details.level){
             await elixirHelper(elixirType, workflow.actor);
         }

@@ -199,6 +199,27 @@ async function rollCheck(wrapped, checkId, options = {}) {
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
+    if (returnData.data?.token) {
+            let sceneTriggers = [];
+            returnData.data.token.document.parent.tokens.filter(i => i.uuid !== returnData.data.token.document.uuid && i.actor).forEach(j => {
+                sceneTriggers.push(...getSortedTriggers(j.actor, 'sceneBonus', checkId, options, this));
+            });
+            let sortedSceneTriggers = [];
+            let names = new Set();
+            sceneTriggers.forEach(i => {
+                if (names.has(i.name)) return;
+                sortedSceneTriggers.push(i);
+                names.add(i.name);
+            });
+            console.log(names);
+            sortedSceneTriggers = sortedSceneTriggers.sort((a, b) => a.priority - b.priority);
+            genericUtils.log('dev', 'Executing Save Macro Pass: sceneBonus');
+            for (let trigger of sortedSceneTriggers) {
+                trigger.roll = returnData;
+                let bonusRoll = await executeMacro(trigger);
+                if (bonusRoll) returnData = CONFIG.Dice.D20Roll.fromRoll(bonusRoll);
+            }
+    }
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
     if (options.chatMessage !== false) {

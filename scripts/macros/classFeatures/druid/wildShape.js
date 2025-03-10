@@ -138,6 +138,20 @@ async function use({workflow}) {
             }
         );
     }
+
+    effectData.changes.push(
+        {
+            key: 'system.bonuses.mwak.attack',
+            value: 1,
+            mode: 2,
+            priority: 20
+        }, {
+            key: 'system.bonuses.mwak.damage',
+            value: 1,
+            mode: 2,
+            priority: 20
+        }
+    );
     if (workflow.actor.getFlag("chris-premades", "keyLevel") >= 2) {
         let immunity = 1;
         let maxAmount = workflow.actor.getFlag("chris-premades", "resistanceAmount");
@@ -152,7 +166,7 @@ async function use({workflow}) {
                 options: {isChecked: true, options: selectOptions, maxAmount: immunity}
             })
         }
-
+    
         let inputs = [['selectAmount']];
         inputs[0].push(targetInputs);
         inputs[0].push({displayAsRows: true, radioName: 'targets', totalMax: maxAmount});

@@ -247,6 +247,7 @@ export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './
 export {fightingSpirit} from './macros/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleSuperiorTechnique} from './macros/classFeatures/multiple/fightingStyleSuperiorTechnique.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/classFeatures/multiple/fightingStyleUnarmedFighting.js';
+export {flashofGenius} from './macros/classFeatures/artificer/flashofGenius.js'
 export {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 export {formOfDread, formOfDreadActive} from './macros/classFeatures/warlock/undead/formOfDread.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';

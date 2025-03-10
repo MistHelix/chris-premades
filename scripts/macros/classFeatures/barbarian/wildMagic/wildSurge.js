@@ -343,280 +343,274 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
     };
 }
 async function level2(workflow, token, actor, rageEffect){
-    //check all of nyxs equiped to make sure its only the axe.
-    let items = actor.items.filter(i => i.type==='weapon' && i.system.equipped);
-    let shields = actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
-    if(shields.length){
-        return;
+    let value = '4'
+    let rollFormula = '1d6';
+    let roll = await new Roll(rollFormula).roll({'async': true});
+    roll.toMessage({
+        rollMode: 'roll',
+        speaker: {'alias': name},
+        flavor: workflow.item.name
+    });
+    let results_html;
+    let effectData;
+    let effect;
+    //Change to probably be +2 str, dex, or con. Save bless for an upgrade letter down the line and lean into the randomness maybe.
+    switch(roll.total) {
+        case 1:
+            // +2 Con
+            results_html = `<h3>Feral Constitution!</h3>
+            <p>The metal of your axe flows into you reinforcing your skin. You gain +${value} Con Score.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
+            effectData = {
+                'name': 'Feral Constitution',
+                'icon': workflow.item.img,
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 60
+                },
+                'changes': [
+                    {
+                        'key': 'system.abilities.con.value',
+                        'mode': 2,
+                        'value': value,
+                        'priority': 20
+                    }
+                ],
+                'flags': {
+                    'chris-premades': {
+                        'aura': false,
+                        'effect': {
+                            'noAnimation': true
+                        }
+                    }
+                }
+            };
+            //Should heal after giving con = to level
+            let level = actor.system.details.level;
+            await actor.update({"system.attributes.hp.value" : actor.system.attributes.hp.value + level * parseInt(value)/2})
+            break;
+        case 2:
+            // +2 Dex
+            results_html = `<h3>Untamed Reflexes!</h3>
+            <p>Your body sears in pain as your brain begins to accelerate. You gain +${value} Dex Score.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
+            effectData = {
+                'name': 'Untamed Reflexes',
+                'icon': workflow.item.img,
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 60
+                },
+                'changes': [
+                    {
+                        'key': 'system.abilities.dex.value',
+                        'mode': 2,
+                        'value': value,
+                        'priority': 20
+                    }
+                ],
+                'flags': {
+                    'chris-premades': {
+                        'aura': false,
+                        'effect': {
+                            'noAnimation': true
+                        }
+                    }
+                }
+            };
+            break;
+        case 3:
+            //+2 Str
+            results_html = `<h3>Feral Strength!</h3>
+            <p>You feel the power of all those you have slain flow into you. You gain +${value} Str Score.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
+            effectData = {
+                'name': 'Feral Strength',
+                'icon': workflow.item.img,
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 60
+                },
+                'changes': [
+                    {
+                        'key': 'system.abilities.str.value',
+                        'mode': 2,
+                        'value': value,
+                        'priority': 20
+                    }
+                ],
+                'flags': {
+                    'chris-premades': {
+                        'aura': false,
+                        'effect': {
+                            'noAnimation': true
+                        }
+                    }
+                }
+            };
+            break;
+            case 4:
+                //+2 Int
+                results_html = `<h3>Strong Headed!</h3>
+                <p>You feel the shards of metal from your enemies weapons reinforce your brain. You gain +${value} Int Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Strong Headed',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.int.value',
+                            'mode': 2,
+                            'value': value,
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                break;
+            case 5:
+                //+2 Wis
+                results_html = `<h3>Herd Instincts!</h3>
+                <p>You feel the power of your animal companions guide you. You gain +${value} Wis Score.</p>`;
+                ChatMessage.create({
+                    content: results_html
+                });
+                effectData = {
+                    'name': 'Herd Instincts',
+                    'icon': workflow.item.img,
+                    'origin': workflow.item.uuid,
+                    'duration': {
+                        'seconds': 60
+                    },
+                    'changes': [
+                        {
+                            'key': 'system.abilities.wis.value',
+                            'mode': 2,
+                            'value': value,
+                            'priority': 20
+                        }
+                    ],
+                    'flags': {
+                        'chris-premades': {
+                            'aura': false,
+                            'effect': {
+                                'noAnimation': true
+                            }
+                        }
+                    }
+                };
+                break;
+        case 6:
+            //+2 Cha
+            results_html = `<h3>Infernal Beauty!</h3>
+            <p>You feel the fire within you burn with courage. You gain +${value} Cha Score.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
+            effectData = {
+                'name': 'Infernal Beauty',
+                'icon': workflow.item.img,
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 60
+                },
+                'changes': [
+                    {
+                        'key': 'system.abilities.cha.value',
+                        'mode': 2,
+                        'value': value,
+                        'priority': 20
+                    }
+                ],
+                'flags': {
+                    'chris-premades': {
+                        'aura': false,
+                        'effect': {
+                            'noAnimation': true
+                        }
+                    }
+                }
+            };
+            break;
+        case 500:
+            //Wild Bless
+            results_html = `<h3>Wild Bless!</h3>
+            <p>Your axe surges with power blessing you with increased strength.</p>`;
+            ChatMessage.create({
+                content: results_html
+            });
+            let blessBonus = '1d4'
+            effectData = {
+                'name': 'Wild Bless',
+                'icon': workflow.item.img,
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 60
+                },
+                'changes': [
+                    {
+                        'key': 'system.bonuses.abilities.save',
+                        'mode': 2,
+                        'value': blessBonus,
+                        'priority': 20
+                    },
+                    {
+                        'key': 'system.bonuses.mwak.attack',
+                        'mode': 2,
+                        'value': blessBonus,
+                        'priority': 20
+                    },
+                    {
+                        'key': 'system.bonuses.msak.attack',
+                        'mode': 2,
+                        'value': blessBonus,
+                        'priority': 20
+                    },
+                    {
+                        'key': 'system.bonuses.rsak.attack',
+                        'mode': 2,
+                        'value': blessBonus,
+                        'priority': 20
+                    },
+                    {
+                        'key': 'system.bonuses.rwak.attack',
+                        'mode': 2,
+                        'value': blessBonus,
+                        'priority': 20
+                    }
+                ],
+                'flags': {
+                    'chris-premades': {
+                        'aura': false,
+                        'effect': {
+                            'noAnimation': true
+                        }
+                    }
+                }
+            };
+            break;
     }
-    if(items.length == 1){
-        let rollFormula = '1d6';
-        let roll = await new Roll(rollFormula).roll({'async': true});
-        roll.toMessage({
-            rollMode: 'roll',
-            speaker: {'alias': name},
-            flavor: workflow.item.name
-        });
-        let results_html;
-        let effectData;
-        let effect;
-        //Change to probably be +2 str, dex, or con. Save bless for an upgrade letter down the line and lean into the randomness maybe.
-        switch(roll.total) {
-            case 1:
-                // +2 Con
-                results_html = `<h3>Feral Constitution!</h3>
-                <p>The metal of your axe flows into you reinforcing your skin. You gain +2 Con Score.</p>`;
-                ChatMessage.create({
-                    content: results_html
-                });
-                effectData = {
-                    'name': 'Feral Constitution',
-                    'icon': workflow.item.img,
-                    'origin': workflow.item.uuid,
-                    'duration': {
-                        'seconds': 60
-                    },
-                    'changes': [
-                        {
-                            'key': 'system.abilities.con.value',
-                            'mode': 2,
-                            'value': '2',
-                            'priority': 20
-                        }
-                    ],
-                    'flags': {
-                        'chris-premades': {
-                            'aura': false,
-                            'effect': {
-                                'noAnimation': true
-                            }
-                        }
-                    }
-                };
-                //Should heal after giving con = to level
-                let level = actor.system.details.level;
-                await actor.update({"system.attributes.hp.value" : actor.system.attributes.hp.value + level})
-                break;
-            case 2:
-                // +2 Dex
-                results_html = `<h3>Untamed Reflexes!</h3>
-                <p>Your body sears in pain as your brain begins to accelerate. You gain +2 Dex Score.</p>`;
-                ChatMessage.create({
-                    content: results_html
-                });
-                effectData = {
-                    'name': 'Untamed Reflexes',
-                    'icon': workflow.item.img,
-                    'origin': workflow.item.uuid,
-                    'duration': {
-                        'seconds': 60
-                    },
-                    'changes': [
-                        {
-                            'key': 'system.abilities.dex.value',
-                            'mode': 2,
-                            'value': '2',
-                            'priority': 20
-                        }
-                    ],
-                    'flags': {
-                        'chris-premades': {
-                            'aura': false,
-                            'effect': {
-                                'noAnimation': true
-                            }
-                        }
-                    }
-                };
-                break;
-            case 3:
-                //+2 Str
-                results_html = `<h3>Feral Strength!</h3>
-                <p>You feel the power of all those you have slain flow into you. You gain +2 Str Score.</p>`;
-                ChatMessage.create({
-                    content: results_html
-                });
-                effectData = {
-                    'name': 'Feral Strength',
-                    'icon': workflow.item.img,
-                    'origin': workflow.item.uuid,
-                    'duration': {
-                        'seconds': 60
-                    },
-                    'changes': [
-                        {
-                            'key': 'system.abilities.str.value',
-                            'mode': 2,
-                            'value': '2',
-                            'priority': 20
-                        }
-                    ],
-                    'flags': {
-                        'chris-premades': {
-                            'aura': false,
-                            'effect': {
-                                'noAnimation': true
-                            }
-                        }
-                    }
-                };
-                break;
-                case 4:
-                    //+2 Int
-                    results_html = `<h3>Strong Headed!</h3>
-                    <p>You feel the shards of metal from your enemies weapons reinforce your brain. You gain +2 Int Score.</p>`;
-                    ChatMessage.create({
-                        content: results_html
-                    });
-                    effectData = {
-                        'name': 'Strong Headed',
-                        'icon': workflow.item.img,
-                        'origin': workflow.item.uuid,
-                        'duration': {
-                            'seconds': 60
-                        },
-                        'changes': [
-                            {
-                                'key': 'system.abilities.int.value',
-                                'mode': 2,
-                                'value': '2',
-                                'priority': 20
-                            }
-                        ],
-                        'flags': {
-                            'chris-premades': {
-                                'aura': false,
-                                'effect': {
-                                    'noAnimation': true
-                                }
-                            }
-                        }
-                    };
-                    break;
-                case 5:
-                    //+2 Wis
-                    results_html = `<h3>Herd Instincts!</h3>
-                    <p>You feel the power of your animal companions guide you. You gain +2 Wis Score.</p>`;
-                    ChatMessage.create({
-                        content: results_html
-                    });
-                    effectData = {
-                        'name': 'Herd Instincts',
-                        'icon': workflow.item.img,
-                        'origin': workflow.item.uuid,
-                        'duration': {
-                            'seconds': 60
-                        },
-                        'changes': [
-                            {
-                                'key': 'system.abilities.wis.value',
-                                'mode': 2,
-                                'value': '2',
-                                'priority': 20
-                            }
-                        ],
-                        'flags': {
-                            'chris-premades': {
-                                'aura': false,
-                                'effect': {
-                                    'noAnimation': true
-                                }
-                            }
-                        }
-                    };
-                    break;
-            case 6:
-                //+2 Cha
-                results_html = `<h3>Infernal Beauty!</h3>
-                <p>You feel the fire within you burn with courage. You gain +2 Cha Score.</p>`;
-                ChatMessage.create({
-                    content: results_html
-                });
-                effectData = {
-                    'name': 'Infernal Beauty',
-                    'icon': workflow.item.img,
-                    'origin': workflow.item.uuid,
-                    'duration': {
-                        'seconds': 60
-                    },
-                    'changes': [
-                        {
-                            'key': 'system.abilities.cha.value',
-                            'mode': 2,
-                            'value': '2',
-                            'priority': 20
-                        }
-                    ],
-                    'flags': {
-                        'chris-premades': {
-                            'aura': false,
-                            'effect': {
-                                'noAnimation': true
-                            }
-                        }
-                    }
-                };
-                break;
-            case 500:
-                //Wild Bless
-                results_html = `<h3>Wild Bless!</h3>
-                <p>Your axe surges with power blessing you with increased strength.</p>`;
-                ChatMessage.create({
-                    content: results_html
-                });
-                let blessBonus = '1d4'
-                effectData = {
-                    'name': 'Wild Bless',
-                    'icon': workflow.item.img,
-                    'origin': workflow.item.uuid,
-                    'duration': {
-                        'seconds': 60
-                    },
-                    'changes': [
-                        {
-                            'key': 'system.bonuses.abilities.save',
-                            'mode': 2,
-                            'value': blessBonus,
-                            'priority': 20
-                        },
-                        {
-                            'key': 'system.bonuses.mwak.attack',
-                            'mode': 2,
-                            'value': blessBonus,
-                            'priority': 20
-                        },
-                        {
-                            'key': 'system.bonuses.msak.attack',
-                            'mode': 2,
-                            'value': blessBonus,
-                            'priority': 20
-                        },
-                        {
-                            'key': 'system.bonuses.rsak.attack',
-                            'mode': 2,
-                            'value': blessBonus,
-                            'priority': 20
-                        },
-                        {
-                            'key': 'system.bonuses.rwak.attack',
-                            'mode': 2,
-                            'value': blessBonus,
-                            'priority': 20
-                        }
-                    ],
-                    'flags': {
-                        'chris-premades': {
-                            'aura': false,
-                            'effect': {
-                                'noAnimation': true
-                            }
-                        }
-                    }
-                };
-                break;
-        }
-        effectUtils.createEffect(workflow.actor, effectData);
-    }
+    effectUtils.createEffect(workflow.actor, effectData);
+
 }
 export let wildSurge = {
     name: 'Wild Surge',

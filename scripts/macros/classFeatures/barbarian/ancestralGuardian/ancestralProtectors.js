@@ -2,8 +2,6 @@ import {combatUtils, constants, effectUtils, genericUtils, itemUtils} from '../.
 
 async function sourceAttack({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
-    if (!effect) return;
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!combatUtils.perTurnCheck(item, 'ancestralProtectors', true, workflow.token.id)) return;
     let effectData = {
@@ -22,7 +20,7 @@ async function sourceAttack({trigger: {entity: item}, workflow}) {
         }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['ancestralProtectorsTarget']);
-    await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {parentEntity: effect, identifier: 'ancestralProtectorsTarget'});
+    await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {identifier: 'ancestralProtectorsTarget'});
     await combatUtils.setTurnCheck(item, 'ancestralProtectors');
 }
 async function early({workflow}) {

@@ -46,7 +46,8 @@ async function use({workflow}) {
 async function pulse({workflow}) {
     let chrisFlags = workflow.item.flags['chris-premades']?.heatMetal;
     let damageFormula = chrisFlags?.damageFormula;
-    let damageType = chrisFlags?.damageType ?? 'fire';
+    let damageType = (workflow.actor.getFlag("midi-qol", "grandmaDamageType")) ?? 'fire';
+    if (damageType == null || damageType =='default') damage_type = 'fire';
     let targetTokenUuid = chrisFlags?.targetUuid;
     let spellDC = chrisFlags?.spellDC;
     let parentEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
@@ -58,6 +59,7 @@ async function pulse({workflow}) {
         errors.missingPackItem();
         return;
     }
+    damageFormula = damageFormula.replace(/\[.*?\]/, `[${damageType}]`);
     featureData.system.damage.parts = [
         [
             damageFormula,
