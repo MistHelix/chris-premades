@@ -387,6 +387,7 @@ export {brave} from './macros/raceFeatures/halfling/brave.js';
 export {breathWeaponAcid, breathWeaponCold, breathWeaponFire, breathWeaponLightning, metallicBreathWeapon, metallicBreathWeaponRepulsion} from './macros/raceFeatures/dragonborn/metallic/breathWeapon.js';
 export {breathWeaponBlack, breathWeaponBlue, breathWeaponBrass, breathWeaponBronze, breathWeaponCopper, breathWeaponGold, breathWeaponGreen, breathWeaponRed, breathWeaponSilver, breathWeaponWhite} from './macros/raceFeatures/dragonborn/legacy/breathWeapon.js';
 export {breathWeaponForce, breathWeaponNecrotic, breathWeaponPsychic, breathWeaponRadiant, breathWeaponThunder} from './macros/raceFeatures/dragonborn/gem/breathWeapon.js';
+export {builtforSuccess} from './macros/raceFeatures/autognome/builtforSuccess.js';
 export {changeSeason} from './macros/raceFeatures/eladrin/changeSeason.js';
 export {chromaticWardingAcid, chromaticWardingCold, chromaticWardingFire, chromaticWardingLightning, chromaticWardingPoison} from './macros/raceFeatures/dragonborn/chromatic/chromaticWarding.js';
 export {constructedResilience} from './macros/raceFeatures/warforged/constructedResilience.js';

@@ -561,6 +561,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             }
         ];
+        console.log(macroInfo);
         return {
             automationInfo: {
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.AutomationInfo',

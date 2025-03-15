@@ -1,34 +1,44 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function early({trigger: {roll, entity: effect}}) {
-    console.log("PLEASE GIVE ME A SIGN")
-    console.log(roll);
-    // console.log(entity);
-    console.log(effect);
     if (roll.data.details.cr != null){
-        console.log("ENEMY KILL THEM");
         return;
     }
-    // if (roll.data.mod != null && roll.data.mod ?= 2){
-    //     return
-    // }
+
+    let actors = game.scenes.active.tokens.filter(actor => actor.name == effect.actor.name);
+    let actor = actors[0];
+    if (tokenUtils.getDistance(roll.data.token, actor, {wallsBlock: true}) > 30) return;
+    // if (actorUtils.hasUsedReaction(actor)) return;
+    console.log(actor.token);
+    console.log(tokenUtils.canSee(actor.token, roll.data.token));
+    // if (!tokenUtils.canSee(actor.token, roll.data.token)) return;
+
     let mod = effect.actor.system.abilities.int.mod;
-    console.log()
+    let finalmod = '+' + effect.actor.system.abilities.int.mod.toString();
+
     if (roll.options.targetValue != null){
         let target = roll.options.targetValue;
-        console.log(target);
         if (roll._total > target){
             return;
         }
         if(roll._total + mod < target){
             return;
         }
-        //TODO ask if they want to add
-        console.log("boosting");
-        return await rollUtils.addToRoll(roll, effect.actor.system.abilities.int.mod);
+        let output = await dialogUtils.confirm(roll.data.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: effect.name, rollTotal: roll.total}));
+
+        if (output){
+            await workflowUtils.completeItemUse(effect, {consumeUsage: true}, {configureDialog: false});
+            return await rollUtils.addToRoll(roll, finalmod);
+
+        }
     }
-    console.log(mod);
-    return await rollUtils.addToRoll(roll, effect.actor.system.abilities.int.mod);
+    console.log(roll.data.name);
+    let output = await dialogUtils.confirm(roll.data.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: effect.name, rollTotal: roll.total}));
+    if (output){
+        await workflowUtils.completeItemUse(effect, {consumeUsage: true}, {configureDialog: false});
+        return await rollUtils.addToRoll(roll, finalmod);
+    }
+    return;
 }
 
 
