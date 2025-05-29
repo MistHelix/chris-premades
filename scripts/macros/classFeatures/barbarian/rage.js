@@ -1,8 +1,8 @@
 import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 import {start as enlargeReduceStart} from '../../spells/enlargeReduce.js';
 async function use({workflow}) {
-    let concentrationEffects = Array.from(workflow.actor.concentration.effects);
-    await Promise.all(concentrationEffects.map(async effect => await genericUtils.remove(effect)));
+    // let concentrationEffects = Array.from(workflow.actor.concentration.effects);
+    // await Promise.all(concentrationEffects.map(async effect => await genericUtils.remove(effect)));
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Rage: End', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Rage.End', identifier: 'rageEnd'});
     if (!featureData) {
         errors.missingPackItem();
@@ -52,25 +52,25 @@ async function use({workflow}) {
                 mode: 2,
                 value: '+ @scale.barbarian.rage-damage',
                 priority: 20
-            },
-            {
-                key: 'flags.midi-qol.fail.spell.vocal',
-                value: 1,
-                mode: 0,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.fail.spell.somatic',
-                value: 1,
-                mode: 0,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.fail.spell.material',
-                value: 1,
-                mode: 0,
-                priority: 20
-            }
+            }// },
+            // {
+            //     key: 'flags.midi-qol.fail.spell.vocal',
+            //     value: 1,
+            //     mode: 0,
+            //     priority: 20
+            // },
+            // {
+            //     key: 'flags.midi-qol.fail.spell.somatic',
+            //     value: 1,
+            //     mode: 0,
+            //     priority: 20
+            // },
+            // {
+            //     key: 'flags.midi-qol.fail.spell.material',
+            //     value: 1,
+            //     mode: 0,
+            //     priority: 20
+            // }
         ],
         flags: {
             dae: {

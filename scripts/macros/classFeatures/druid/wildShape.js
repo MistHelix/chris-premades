@@ -158,7 +158,8 @@ async function use({workflow}) {
         let selectOptions = [];
         let targetInputs = [];
         let types = [['🧪 Acid', 'acid'], ['🔥 Fire', 'fire'], 
-                    ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder']];
+                    ['❄ Cold', 'cold'], ['⚡ Lightning', 'lightning'], ['🔊 Thunder', 'thunder'],
+                    ['💀 Necrotic', 'nectroic'],['☼ Radiant', 'radiant']];
         for (let i of types){
             targetInputs.push({
                 label: i[0],
